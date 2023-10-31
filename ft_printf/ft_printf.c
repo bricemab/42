@@ -19,55 +19,68 @@ int	get_nbr_args(char *str)
 	return count;
 }
 
-void	print_string(char *string, va_list args)
+int	print_format(va_list *args, const char format)
 {
-	int 	i;
+	int length;
+
+	length = 0;
+	if (format == 'c')
+		length += ft_print_char(va_arg(*args, int));
+	else if (format == 's')
+		length += ft_print_str(va_arg(*args, char *));
+//	else if (format == 'p')
+//		length += ft_print_ptr(va_arg(args, unsigned long long));
+	else if (format == 'd' || format == 'i')
+		length += ft_print_nbr(va_arg(*args, int));
+	else if (format == 'u')
+		length += ft_print_unsigned(va_arg(*args, unsigned int));
+//	else if (format == 'x' || format == 'X')
+//		length += ft_print_hex(va_arg(*args, unsigned int), format);
+	else if (format == '%')
+		length += ft_print_percent();
+	return (length);
+}
+
+int	print_string(char *string, va_list *args)
+{
+	int	i;
+	int	length;
 
 	i = 0;
-	va_end(args);
+	length = 0;
 	while(string[i])
 	{
-		if (string[i] == '%' && string[i + 1] != '%')
+		if (string[i] == '%')
 		{
-//			if ()
+			length += print_format(args, string[i + 1]);
 			i++;
 		}
 		else
+		{
 			ft_putchar(string[i]);
+			length++;
+		}
 		i++;
 	}
+	return (length);
 }
 
 int ft_printf(const char *string, ...)
 {
     va_list args;
     va_list args_cpy;
-    int     nbr_args;
-    int     i;
+    int     length;
 
     va_start(args_cpy, string);
     va_start(args, string);
-	va_copy(args, args_cpy);
-	nbr_args = get_nbr_args((char *)string);
-	i = 0;
-	while (i < nbr_args)
-	{
-		if (!va_arg(args_cpy, char *))
-		{
-			printf("nombre de parametre plus grand que le nombre de %%");
-			return (0);
-		}
-		i++;
-	}
-
-	print_string((char *)string, args);
+	length = print_string((char *)string, &args);
     va_end(args);
     va_end(args_cpy);
-    return (0);
+    return (length);
 }
 
 int main()
 {
-    ft_printf("t%srest%saa", "%zebi%", "asdf");
-	//printf("%s", "zebi");
+    int test = ft_printf("%s%s%u = %d", "Hello ", "World !", 100, 100);
+	printf("\nreturn => %u", test);
 }
