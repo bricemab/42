@@ -1,25 +1,6 @@
 #include "ft_printf.h"
 
-int	get_nbr_args(char *str)
-{
-	int i;
-	int count;
-
-	i = 0;
-	count = 0;
-	while (str[i])
-	{
-		if (str[i] == '%' && str[i+1] != '%')
-		{
-			count++;
-			i++;
-		}
-		i++;
-	}
-	return count;
-}
-
-int	print_format(va_list *args, const char format)
+static	int	print_format(va_list *args, const char format)
 {
 	int length;
 
@@ -28,20 +9,22 @@ int	print_format(va_list *args, const char format)
 		length += ft_print_char(va_arg(*args, int));
 	else if (format == 's')
 		length += ft_print_str(va_arg(*args, char *));
-//	else if (format == 'p')
-//		length += ft_print_ptr(va_arg(args, unsigned long long));
+	else if (format == 'p')
+		length += ft_print_ptr(va_arg(*args, unsigned long), 87);
 	else if (format == 'd' || format == 'i')
 		length += ft_print_nbr(va_arg(*args, int));
 	else if (format == 'u')
 		length += ft_print_unsigned(va_arg(*args, unsigned int));
-//	else if (format == 'x' || format == 'X')
-//		length += ft_print_hex(va_arg(*args, unsigned int), format);
+	else if (format == 'x')
+		length += ft_print_hex(va_arg(*args, unsigned int), 87);
+	else if (format == 'X')
+		length += ft_print_hex(va_arg(*args, unsigned int), 55);
 	else if (format == '%')
 		length += ft_print_percent();
 	return (length);
 }
 
-int	print_string(char *string, va_list *args)
+static	int	print_string(char *string, va_list *args)
 {
 	int	i;
 	int	length;
@@ -81,6 +64,7 @@ int ft_printf(const char *string, ...)
 
 int main()
 {
-    int test = ft_printf("%s%s%u = %d", "Hello ", "World !", 100, 100);
+	int t = 10;
+    int test = ft_printf("%s%s%u = %d => %p %p", "Hello ", "World !", 100, 100, &t, 16);
 	printf("\nreturn => %u", test);
 }

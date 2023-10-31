@@ -1,6 +1,6 @@
 #include "ft_printf.h"
 
-int	ft_num_len(unsigned	int num)
+static	int	ft_num_len(unsigned	int num)
 {
 	int	len;
 
@@ -13,7 +13,7 @@ int	ft_num_len(unsigned	int num)
 	return (len);
 }
 
-char	*ft_uitoa(unsigned int n)
+static	char	*ft_uitoa(unsigned int n)
 {
 	char	*num;
 	int		len;
