@@ -1,40 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr.c                                        :+:      :+:    :+:   */
+/*   ft_putstr.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: obibik <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: bmabilla <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/08/22 16:57:09 by obibik            #+#    #+#             */
-/*   Updated: 2018/08/22 16:57:11 by obibik           ###   ########.fr       */
+/*   Created: 2023/10/25 14:15:02 by bmabilla          #+#    #+#             */
+/*   Updated: 2023/10/25 14:15:04 by bmabilla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-/*
-** Outputs the string s to the standard output.
-** Param. #1 The string to output.
-** Return value None.
-** Libc functions write(2).
-*/
 
 #include "libft.h"
 
 void	ft_putstr(char const *s)
 {
-	int	i;
-
-	i = 0;
-	while (s[i])
-	{
-		ft_putchar(s[i]);
-		i++;
-	}
+	write(1, s, ft_strlen(s));
 }
 
 /*
-** int main () {
-**     char letter[20] = "Life if good.";
-**     ft_putstr(letter);
-**     return(0);
-** }
+int main () {
+    char letter[20] = "Life if good.";
+    ft_putstr_fd(letter, 1);
+    return(0);
+}
 */

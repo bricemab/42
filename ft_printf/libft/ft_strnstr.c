@@ -3,56 +3,41 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: obibik <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: bmabilla <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/08/14 17:34:09 by obibik            #+#    #+#             */
-/*   Updated: 2018/08/14 17:34:11 by obibik           ###   ########.fr       */
+/*   Created: 2023/10/10 18:39:38 by bmabilla          #+#    #+#             */
+/*   Updated: 2023/10/10 18:39:40 by bmabilla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/*
-** strstr, strcasestr, strnstr -- locate a substring in a string
-** The strnstr() function locates the first occurrence of the null-terminated
-** string needle in the string haystack, where not more than len characters
-** are searched.  Characters that appear after a `\0' character are not
-** searched. Since the strnstr() function is a FreeBSD specific API, it
-** should only be used when portability is not a concern.
-*/
-
 #include "libft.h"
 
-char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
+char	*ft_strnstr(const char *s1, const char *s2, size_t n)
 {
-	unsigned long	i;
-	int				j;
+	size_t	i;
+	size_t	c;
+	size_t	n_len;
+	char	*str;
 
-	j = 0;
 	i = 0;
-	if (!*needle)
-		return ((char *)haystack);
-	while (haystack[i])
+	str = (char *)s1;
+	n_len = ft_strlen(s2);
+	if (n_len == 0 || s1 == s2)
+		return (str);
+	while (str[i] != '\0' && i < n)
 	{
-		j = 0;
-		while (haystack[i] == needle[j] && haystack[i] && i < len)
-		{
-			i++;
-			j++;
-		}
-		if (!needle[j])
-			return ((char *)&haystack[i - j]);
-		i = (i - j) + 1;
+		c = 0;
+		while (str[i + c] != '\0' && s2[c] != '\0'
+			&& str[i + c] == s2[c] && i + c < n)
+			c++;
+		if (c == n_len)
+			return (str + i);
+		i++;
 	}
-	return (NULL);
+	return (0);
 }
-
 /*
-** int main () {
-**    const char haystack[20] = "TutorialsPoint";
-**    const char needle[10] = "to";
-**    char *result;
-**
-**    result = ft_strnstr(haystack, needle, 4);
-**    printf("The substring is: %s\n", result);
-**    return(0);
-** }
-*/
+int main()
+{
+	printf("%s", ft_strnstr("test", "ffes", 4));
+}*/

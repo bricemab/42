@@ -3,46 +3,59 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: obibik <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: bmabilla <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/08/14 17:32:56 by obibik            #+#    #+#             */
-/*   Updated: 2018/08/14 17:32:59 by obibik           ###   ########.fr       */
+/*   Created: 2023/10/09 16:12:01 by bmabilla          #+#    #+#             */
+/*   Updated: 2023/10/09 16:12:03 by bmabilla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/*
-** strlcpy, strlcat -- size-bounded string copying and concatenation
-*/
-
 #include "libft.h"
 
-size_t		ft_strlcat(char *dst, const char *src, size_t size)
+size_t	ft_strlcat(char *dest, const char *src, size_t size)
 {
-	size_t i;
-	size_t len;
+	size_t	i;
+	int		j;
+	size_t	dest_lenght;
+	int		src_lenght;
 
-	len = ft_strlen(dst) + ft_strlen(src);
-	if (size <= ft_strlen(dst))
-		return (ft_strlen(src) + size);
-	while (*dst)
-		dst++;
-	i = 0;
-	while ((i < size - (len - ft_strlen(src)) - 1) && src[i])
+	i = ft_strlen(dest);
+	j = 0;
+	dest_lenght = ft_strlen(dest);
+	src_lenght = ft_strlen(src);
+	if (size < 1)
+		return (src_lenght + size);
+	while (src[j] && i < size - 1)
 	{
-		dst[i] = src[i];
+		dest[i] = src[j];
 		i++;
+		j++;
 	}
-	dst[i] = '\0';
-	return (len);
+	dest[i] = '\0';
+	if (size < dest_lenght)
+		return (src_lenght + size);
+	else
+		return (dest_lenght + src_lenght);
 }
-
 /*
-** int main () {
-**    char s1[50] = "This is s1. ";
-**    char s2[50] = "This is s2.";
-**
-**    ft_strlcat(s1, s2, 3);
-**    printf("Final string : %s\n", s1);
-**    return(0);
-** }
+int main()
+{
+	char *src = "efgh";
+	char dest[20] = "abcd";
+	printf("%c", '\n');
+	printf("%lu", strlcat(dest, src, 1));
+	printf("%c", '\n');
+	printf("%s", dest);
+	printf("%c", '\n');
+	printf("%lu", strlen(dest));
+	printf("%c", '\n');
+	printf("%c", '\n');
+	src = "efgh";
+	char dest2[20] = "abcd";
+	printf("%d", ft_strlcat(dest2, src, 1));
+	printf("%c", '\n');
+	printf("%s", dest2);
+	printf("%c", '\n');
+	printf("%lu", strlen(dest2));
+}
 */

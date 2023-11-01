@@ -3,64 +3,81 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: obibik <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: bmabilla <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/08/22 16:52:24 by obibik            #+#    #+#             */
-/*   Updated: 2018/08/22 16:54:51 by obibik           ###   ########.fr       */
+/*   Created: 2023/10/25 14:16:23 by bmabilla          #+#    #+#             */
+/*   Updated: 2023/10/25 14:16:25 by bmabilla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/*
-** itoa converts integer to string
-** Allocate (with malloc(3)) and returns a “fresh” string ending
-** with ’\0’ representing the integer n given as argument.
-** Negative numbers must be supported. If the allocation fails,
-** the function returns NULL.
-**
-** Param. #1 The integer to be transformed into a string.
-**
-** Return value: The string representing the integer passed as argument.
-** Libc functions malloc(3)
-*/
-
 #include "libft.h"
 
-char	*ft_itoa(int nbr)
+static int	ft_nbr_len(int nb)
 {
-	int		length;
-	int		sign;
-	char	*str;
+	int	i;
 
-	sign = nbr;
-	length = 1;
-	while (sign /= 10)
-		length++;
-	sign = nbr < 0 ? 1 : 0;
-	length = nbr < 0 ? length += 1 : length;
-	if (nbr == -2147483648)
-		return (str = ft_strdup("-2147483648"));
-	str = ft_strnew(length);
-	if (!str)
-		return (NULL);
-	if (sign)
-		str[0] = '-';
-	nbr = nbr < 0 ? nbr *= -1 : nbr;
-	while (--length >= sign)
+	i = 1;
+	if (nb < 0)
 	{
-		str[length] = (nbr >= 10) ? (nbr % 10) + 48 : nbr + 48;
-		nbr /= 10;
+		i++;
+		nb *= -1;
 	}
-	str[ft_strlen(str)] = '\0';
-	return (str);
+	while (nb > 9)
+	{
+		nb /= 10;
+		i++;
+	}
+	return (i);
 }
 
+static int	ft_div(int len)
+{
+	int	i;
+
+	i = 1;
+	if (len == 1)
+		return (1);
+	while (len > 1)
+	{
+		i *= 10;
+		len--;
+	}
+	return (i);
+}
+
+char	*ft_itoa(int n)
+{
+	int		i;
+	int		len;
+	int		len2;
+	char	*result;
+
+	i = 0;
+	len = ft_nbr_len(n);
+	len2 = len;
+	if (n == -2147483648)
+		return (ft_strdup("-2147483648"));
+	result = (char *)malloc(sizeof(char) * (len + 1));
+	if (!result)
+		return (NULL);
+	if (n < 0)
+	{
+		n *= -1;
+		result[0] = '-';
+		i++;
+		len--;
+	}
+	while (i < len2)
+		result[i++] = ((n / ft_div(len--)) % 10) + 48;
+	result[i] = '\0';
+	return (result);
+}
 /*
-** int main()
-** {
-** 	int nmb = 89;
-** 	char *val = ft_itoa(nmb);
-** 	printf("This is number %d\n", nmb);
-** 	printf("This is string %s\n", val);
-** 	return 0;
-** }
+int main()
+{
+	printf("%s\n", ft_itoa(-9874));
+	printf("%s\n", ft_itoa(543000));
+	printf("%s\n", ft_itoa(8124));
+	return 0;
+}
 */

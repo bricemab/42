@@ -3,39 +3,29 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: obibik <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: bmabilla <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/08/14 17:29:50 by obibik            #+#    #+#             */
-/*   Updated: 2018/08/14 17:30:00 by obibik           ###   ########.fr       */
+/*   Created: 2023/10/09 12:27:30 by bmabilla          #+#    #+#             */
+/*   Updated: 2023/10/09 12:27:34 by bmabilla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/*
-** strlen, strnlen -- find length of string
-**
-** We use a size_t because it is guaranteed to be big enough to contain
-** the size of the biggest object your system can handle. This way we can
-** display the absolute biggest string that our computer can handle.
-*/
-
 #include "libft.h"
 
-size_t	ft_strlen(const char *s)
+size_t	ft_strlen(const char *str)
 {
-	size_t i;
+	int	i;
 
 	i = 0;
-	while (s[i] != '\0')
+	while (str[i])
+	{
 		i++;
+	}
 	return (i);
 }
-
 /*
-** int main()
-** {
-** 	char str[] = "Life is good.";
-** 	int result = ft_strlen(str);
-** 	printf("The length of the string is %d.\n", result);
-** 	return 0;
-** }
-*/
+#include "stdio.h"
+int main()
+{
+	printf("%d", ft_strlen("zeasdfbi"));
+}*/

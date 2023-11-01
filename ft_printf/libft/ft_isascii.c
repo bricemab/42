@@ -3,41 +3,26 @@
 /*                                                        :::      ::::::::   */
 /*   ft_isascii.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: obibik <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: bmabilla <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/08/14 17:35:41 by obibik            #+#    #+#             */
-/*   Updated: 2018/08/14 17:35:44 by obibik           ###   ########.fr       */
+/*   Created: 2023/10/09 15:08:51 by bmabilla          #+#    #+#             */
+/*   Updated: 2023/10/09 15:08:53 by bmabilla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/*
-** isascii -- test for ASCII character
-*/
-
 #include "libft.h"
 
-int		ft_isascii(int c)
+int	ft_isascii(int n)
 {
-	return (c >= 0 && c <= 127);
+	if (n >= 0 && n <= 127)
+	{
+		return (1);
+	}
+	return (0);
 }
-
 /*
-**  int main()
-**  {
-**   	char c, result;
-**
-**      c = '7';
-**    	result = ft_isascii(c);
-**      printf("The result is %d\n", result);
-**
-**      c = 'g';
-**    	result = ft_isascii(c);
-**      printf("The result is %d\n", result);
-**
-**      c = '+';
-**    	result = ft_isascii(c);
-**      printf("The result is %d\n", result);
-**
-**    	return 0;
-**  }
-*/
+#include "stdio.h"
+int main()
+{
+	printf("%i", ft_isascii(0x80));
+}*/

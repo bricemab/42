@@ -3,20 +3,12 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: obibik <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: bmabilla <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/08/22 16:55:47 by obibik            #+#    #+#             */
-/*   Updated: 2018/08/22 16:55:49 by obibik           ###   ########.fr       */
+/*   Created: 2023/10/25 14:39:24 by bmabilla          #+#    #+#             */
+/*   Updated: 2023/10/25 14:39:26 by bmabilla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-/*
-** Outputs the char c to the file descriptor fd.
-** Param. #1 The character to output.
-** Param. #2 The file descriptor.
-** Return value None.
-** Libc functions write(2).
-*/
 
 #include "libft.h"
 

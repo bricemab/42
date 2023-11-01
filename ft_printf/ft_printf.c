@@ -1,8 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bmabilla <marvin@42lausanne.ch>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/11/01 12:15:43 by bmabilla          #+#    #+#             */
+/*   Updated: 2023/11/01 12:15:45 by bmabilla         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_printf.h"
 
 static	int	print_format(va_list *args, const char format)
 {
-	int length;
+	int	length;
 
 	length = 0;
 	if (format == 'c')
@@ -31,7 +43,7 @@ static	int	print_string(char *string, va_list *args)
 
 	i = 0;
 	length = 0;
-	while(string[i])
+	while (string[i])
 	{
 		if (string[i] == '%')
 		{
@@ -48,23 +60,19 @@ static	int	print_string(char *string, va_list *args)
 	return (length);
 }
 
-int ft_printf(const char *string, ...)
+int	ft_printf(const char *string, ...)
 {
-    va_list args;
-    va_list args_cpy;
-    int     length;
+	va_list	args;
+	int		length;
 
-    va_start(args_cpy, string);
-    va_start(args, string);
+	va_start(args, string);
 	length = print_string((char *)string, &args);
-    va_end(args);
-    va_end(args_cpy);
-    return (length);
+	va_end(args);
+	return (length);
 }
-
+/*
 int main()
 {
-	int t = 10;
-    int test = ft_printf("%s%s%u = %d => %p %p", "Hello ", "World !", 100, 100, &t, 16);
+    int test = ft_printf("%d%dd%d", 1, 2, -3);
 	printf("\nreturn => %u", test);
-}
+}*/

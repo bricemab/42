@@ -3,19 +3,12 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: obibik <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: bmabilla <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/08/14 17:20:28 by obibik            #+#    #+#             */
-/*   Updated: 2018/08/14 17:20:33 by obibik           ###   ########.fr       */
+/*   Created: 2023/10/10 20:10:09 by bmabilla          #+#    #+#             */
+/*   Updated: 2023/10/10 20:10:10 by bmabilla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-/*
-** memmove -- copy byte string
-** The memmove() function copies len bytes from string src to string dst.
-** The two strings may overlap; the copy is always done in a non-destructive
-** manner. The memmove() function returns the original value of dst.
-*/
 
 #include "libft.h"
 
@@ -23,45 +16,31 @@ void	*ft_memmove(void *dst, const void *src, size_t len)
 {
 	char	*d;
 	char	*s;
-	size_t	i;
 
-	d = (char*)dst;
-	s = (char*)src;
-	i = 0;
-	if (d == s)
-		return (d);
+	d = (char *)dst;
+	s = (char *)src;
+	if (dst == src)
+		return (dst);
 	if (s < d)
 	{
-		i = len;
-		while (i--)
-			((char*)d)[i] = ((char*)s)[i];
+		while (len--)
+			*(d + len) = *(s + len);
+		return (dst);
 	}
-	else
-	{
-		i = 0;
-		while (i < len)
-		{
-			((char*)d)[i] = ((char*)s)[i];
-			i++;
-		}
-	}
-	return (d);
+	while (len--)
+		*d++ = *s++;
+	return (dst);
 }
-
 /*
-** void * memmove(void *s1, const void *s2, size_t n)
-** {
-**     return memcpy(s1, s2, n);
-** }
-*/
+int main() {
+	char buffer[20] = "Hello, World!";
 
-/*
-** int main()
-** {
-** 	char dst[100] = "Libc is";
-** 	char src[100] = "the standard library.";
-** 	ft_memmove(dst, src, 5);
-** 	printf("dst after memset(): %s\n", dst);
-** 	return 0;
-** }
-*/
+	// Déplacer "World!" au début de la chaîne en utilisant memmove
+	ft_memmove(buffer, buffer+7, strlen(buffer));
+
+	//printf("%s\n", buffer+3);
+	// Afficher le résultat
+	printf("Résultat : -%s-\n", buffer);
+
+	return 0;
+}*/

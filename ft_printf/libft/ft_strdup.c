@@ -3,46 +3,35 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: obibik <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: bmabilla <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/08/14 17:30:12 by obibik            #+#    #+#             */
-/*   Updated: 2018/08/14 17:30:15 by obibik           ###   ########.fr       */
+/*   Created: 2023/10/11 14:08:12 by bmabilla          #+#    #+#             */
+/*   Updated: 2023/10/11 14:08:13 by bmabilla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/*
-** strdup, strndup -- save a copy of a string
-*/
-
 #include "libft.h"
 
-char	*ft_strdup(const char *src)
+char	*ft_strdup(const char *s1)
 {
-	char	*dup;
-	int		i;
+	char	*ptr;
+	int		length;
 
-	i = 0;
-	while (src[i] != '\0')
-		i++;
-	dup = (char *)malloc(i + 1);
-	if (dup == NULL)
-		return (0);
-	i = 0;
-	while (src[i] != '\0')
-	{
-		dup[i] = src[i];
-		i++;
-	}
-	dup[i] = '\0';
-	return (dup);
+	length = ft_strlen(s1) + 1;
+	ptr = malloc(sizeof(char) * length);
+	if (!ptr)
+		return (NULL);
+	ft_memcpy(ptr, s1, length);
+	return (ptr);
 }
-
 /*
-** int main()
-** {
-**     char str[] = "GeeksForGeeks";
-**     char* result = ft_strdup(str);
-**     printf("%s", result);
-**     return 0;
-** }
-*/
+int main() {
+
+	const char * original = "The original string.";
+
+	char * copy = ft_strdup( original );
+	printf( "%s\n", copy );
+	free( copy );
+
+	return EXIT_SUCCESS;
+}*/

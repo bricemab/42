@@ -1,27 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_toupper.c                                       :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bmabilla <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/10 15:33:46 by bmabilla          #+#    #+#             */
-/*   Updated: 2023/10/10 15:33:48 by bmabilla         ###   ########.fr       */
+/*   Created: 2023/10/10 21:55:32 by bmabilla          #+#    #+#             */
+/*   Updated: 2023/10/10 21:55:33 by bmabilla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_toupper(int c)
+void	*ft_calloc(size_t count, size_t size)
 {
-	if (c >= 97 && c <= 122)
-		return (c - 32);
-	return (c);
+	void	*ptr;
+
+	ptr = (void *)malloc(count * size);
+	if (!ptr)
+		return (NULL);
+	ft_bzero(ptr, size * count);
+	return (ptr);
 }
 /*
-#include "stdio.h"
-#include "ctype.h"
 int main()
 {
-	printf("%c", ft_toupper('{'));
+	int i;
+	int n = 10;
+	int * pointer = ft_calloc( n, sizeof(int) );
+	for ( i=0; i<n-4; i++ ) {
+		pointer[i] = i;
+	}
+	for (i=0; i<n; i++ ) {
+		printf( "%d ", pointer[i] );
+	}
+	printf( "\n" );
 }*/

@@ -3,41 +3,26 @@
 /*                                                        :::      ::::::::   */
 /*   ft_isprint.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: obibik <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: bmabilla <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/08/14 17:36:04 by obibik            #+#    #+#             */
-/*   Updated: 2018/08/14 17:36:12 by obibik           ###   ########.fr       */
+/*   Created: 2023/10/09 15:13:05 by bmabilla          #+#    #+#             */
+/*   Updated: 2023/10/09 15:13:07 by bmabilla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/*
-** isprint -- printing character test (space character inclusive)
-*/
-
 #include "libft.h"
 
-int		ft_isprint(int c)
+int	ft_isprint(int n)
 {
-	return (c >= 32 && c < 127);
+	if (n >= 32 && n <= 126)
+	{
+		return (1);
+	}
+	return (0);
 }
-
 /*
-** int main()
-** {
-**  	char c, result;
-**
-**     c = 'NUL';
-**   	result = ft_isprint(c);
-**     printf("The result is %d\n", result);
-**
-**     c = 'g';
-**   	result = ft_isprint(c);
-**     printf("The result is %d\n", result);
-**
-**     c = '+';
-**   	result = ft_isprint(c);
-**     printf("The result is %d\n", result);
-**
-**   	return 0;
-** }
-*/
+#include "stdio.h"
+int main()
+{
+	printf("%i", ft_isprint(' '));
+}*/

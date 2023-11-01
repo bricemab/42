@@ -3,49 +3,36 @@
 /*                                                        :::      ::::::::   */
 /*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: obibik <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: bmabilla <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/08/14 13:53:28 by obibik            #+#    #+#             */
-/*   Updated: 2018/08/14 13:53:38 by obibik           ###   ########.fr       */
+/*   Created: 2023/10/10 19:15:32 by bmabilla          #+#    #+#             */
+/*   Updated: 2023/10/10 19:15:33 by bmabilla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-/*
-** bzero -- write zeroes to a byte string
-** The bzero() function writes n zeroed bytes to the string s.
-** If n is zero, bzero() does nothing.
-*/
 
 #include "libft.h"
 
 void	ft_bzero(void *s, size_t n)
 {
-	char *tmp;
+	size_t	i;
 
-	tmp = (char *)s;
-	while (n > 0)
+	i = 0;
+	while (i < n)
 	{
-		*tmp = 0;
-		tmp++;
-		n--;
+		*((char *) s + i) = 0;
+		i++;
 	}
-	return ;
 }
-
 /*
-** void	ft_bzero(void *s, size_t n)
-** {
-** 	ft_memset(s, 0, n);
-** }
-*/
+int main () {
+	char str[50];
 
-/*
-** int main()
-** {
-**    char str[100] = "Libc is the standard library.";
-**
-**    ft_bzero(str + 3, 1);
-**    printf("After memset(): %s\n", str);
-**    return 0;
-** }
-*/
+	strcpy(str,"This is a string");
+	puts(str);
+
+	ft_bzero(str, 2);
+	puts(str);
+
+	printf("%s", str);
+	return(0);
+}*/

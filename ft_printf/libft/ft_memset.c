@@ -3,43 +3,38 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: obibik <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: bmabilla <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/08/14 12:12:09 by obibik            #+#    #+#             */
-/*   Updated: 2018/08/14 13:08:57 by obibik           ###   ########.fr       */
+/*   Created: 2023/10/10 18:52:56 by bmabilla          #+#    #+#             */
+/*   Updated: 2023/10/10 18:52:57 by bmabilla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-/*
-** memset -- fill a byte string with a byte value.
-** The memset() function writes len bytes of value c
-** (converted to an unsigned char) to the string b.
-** The memset() function returns its first argument.
-*/
 
 #include "libft.h"
 
 void	*ft_memset(void *b, int c, size_t len)
 {
-	char *p;
+	char	*str;
+	size_t	i;
 
-	p = (char *)b;
-	while (len > 0)
+	str = b;
+	i = 0;
+	while (i < len)
 	{
-		*p = c;
-		p++;
-		len--;
+		str[i] = c;
+		i++;
 	}
 	return (b);
 }
-
 /*
-** int main()
-** {
-** 	char str[100] = "Libc is the standard library.";
-**
-**	ft_memset(str, '.', 8 * sizeof(char));
-**	printf("After memset(): %s\n", str);
-**	return 0;
-** }
-*/
+int main () {
+	char str[50];
+
+	strcpy(str,"This is string.h library function");
+	puts(str);
+
+	ft_memset(str,'$',2);
+	puts(str);
+
+	return(0);
+}*/

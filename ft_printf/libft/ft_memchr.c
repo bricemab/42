@@ -3,42 +3,42 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: obibik <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: bmabilla <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/08/14 17:29:11 by obibik            #+#    #+#             */
-/*   Updated: 2018/08/14 17:29:15 by obibik           ###   ########.fr       */
+/*   Created: 2023/10/10 20:34:52 by bmabilla          #+#    #+#             */
+/*   Updated: 2023/10/10 20:34:53 by bmabilla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-/*
-** memchr -- locate byte in byte string
-*/
 
 #include "libft.h"
 
 void	*ft_memchr(const void *s, int c, size_t n)
 {
-	const char	*sc;
-	size_t		i;
+	size_t	i;
 
-	sc = (const char *)s;
-	i = -1;
-	while (++i < n)
-		if (*(sc + i) == (char)c)
-			return ((void *)sc + i);
+	i = 0;
+	while (i < n)
+	{
+		if (*(unsigned char *)(s + i) == (unsigned char)c)
+			return ((void *)(s + i));
+		i++;
+	}
 	return (NULL);
 }
-
 /*
-** int main () {
-**    const char str[] = "http://www.tutorialspoint.com";
-**    const char ch = '.';
-**    char *result;
-**
-**    result = memchr(str, ch, 11);
-**
-**    printf("String after character is %s\n", result);
-**
-**    return(0);
-** }
+int main() {
+	char str[] = "Hello, World!";
+	char target = 'W';
+
+	// Utilisation de memchr pour rechercher la première occurrence de 'W'
+	char *result = (char *)ft_memchr(str, target, strlen(str));
+
+	if (result != NULL) {
+		printf("Caractère trouvé à la position : %ld\n", result - str);
+	} else {
+		printf("Caractère non trouvé.\n");
+	}
+
+	return 0;
+}
 */

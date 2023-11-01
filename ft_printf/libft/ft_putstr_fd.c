@@ -3,26 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: obibik <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: bmabilla <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/08/22 16:57:23 by obibik            #+#    #+#             */
-/*   Updated: 2018/08/22 16:57:27 by obibik           ###   ########.fr       */
+/*   Created: 2023/10/25 14:15:02 by bmabilla          #+#    #+#             */
+/*   Updated: 2023/10/25 14:15:04 by bmabilla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-/*
-** Outputs the string s to the file descriptor fd.
-** Param. #1 The string to output.
-** Param. #2 The file descriptor.
-** Return value None.
-** Libc functions write(2).
-*/
 
 #include "libft.h"
 
 void	ft_putstr_fd(char const *s, int fd)
 {
-    write(fd, s, ft_strlen(s));
+	write(fd, s, ft_strlen(s));
 }
 
 /*
@@ -32,4 +24,3 @@ int main () {
     return(0);
 }
 */
-

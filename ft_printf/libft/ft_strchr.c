@@ -1,45 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   ft_strchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: obibik <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: bmabilla <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/08/14 17:33:14 by obibik            #+#    #+#             */
-/*   Updated: 2018/08/14 17:33:16 by obibik           ###   ########.fr       */
+/*   Created: 2023/10/10 15:43:23 by bmabilla          #+#    #+#             */
+/*   Updated: 2023/10/10 15:43:26 by bmabilla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-/*
-** strchr, strrchr -- locate character in string
-** The strchr() function locates the first occurrence of c (converted to a char)
-** in the string pointed to by s.  The terminating null character is considered
-** to be part of the string; therefore if c is `\0',
-** the functions locate the terminating `\0'.
-** The functions strchr() and strrchr() return a pointer to the located
-** character, or NULL if the character does not appear in the string.
-*/
 
 #include "libft.h"
 
 char	*ft_strchr(const char *s, int c)
 {
-	while (*s != (char)c)
-	{
-		if (!*s++)
-			return (0);
-	}
-	return (char *)s;
-}
+	int	i;
 
+	i = 0;
+	while (s[i])
+	{
+		if (s[i] == (char)c)
+			return ((char *)s + i);
+		i++;
+	}
+	if (s[i] == (char)c)
+		return ((char *)(s + i));
+	return (NULL);
+}
 /*
-** int main () {
-**    const char str[] = "http://www.tutorialspoint.com";
-**    const char ch = 'f';
-**    char *result;
-**
-**    result = ft_strchr(str, ch);
-**    printf("String after a character is %s\n", result);
-**    return(0);
-** }
-*/
+#include "stdio.h"
+#include "string.h"
+int main()
+{
+	char *s = "test";
+	printf("%s", ft_strchr(s, 'r'));
+	printf("\n");
+	printf("%s", strchr(s, 'r'));
+}*/

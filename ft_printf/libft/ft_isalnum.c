@@ -3,44 +3,26 @@
 /*                                                        :::      ::::::::   */
 /*   ft_isalnum.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: obibik <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: bmabilla <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/08/14 17:35:29 by obibik            #+#    #+#             */
-/*   Updated: 2018/08/14 17:35:31 by obibik           ###   ########.fr       */
+/*   Created: 2023/10/09 12:52:00 by bmabilla          #+#    #+#             */
+/*   Updated: 2023/10/09 12:52:02 by bmabilla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/*
-** isalnum -- alphanumeric character test
-*/
-
 #include "libft.h"
 
-int	ft_isalnum(int c)
+int	ft_isalnum(int n)
 {
-	if (ft_isalpha(c) || ft_isdigit(c))
+	if ((n >= 65 && n <= 90) || (n >= 97 && n <= 122) || (n >= 48 && n <= 57))
+	{
 		return (1);
-	else
-		return (0);
+	}
+	return (0);
 }
 
-/*
-** int main()
-** {
-** 	char c, result;
-**
-**     c = '*';
-**  	result = ft_isalnum(c);
-**     printf("The result is %d\n", result);
-**
-**     c = 'g';
-**  	result = ft_isalnum(c);
-**     printf("The result is %d\n", result);
-**
-**     c = '+';
-**  	result = ft_isalnum(c);
-**     printf("The result is %d\n", result);
-**
-**  	return 0;
-** }
-*/
+/*#include "stdio.h"
+int main()
+{
+	printf("%i", ft_isalnum('#'));
+}*/

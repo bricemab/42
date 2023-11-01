@@ -3,48 +3,36 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: obibik <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: bmabilla <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/08/14 17:34:36 by obibik            #+#    #+#             */
-/*   Updated: 2018/08/14 17:34:38 by obibik           ###   ########.fr       */
+/*   Created: 2023/10/10 18:19:24 by bmabilla          #+#    #+#             */
+/*   Updated: 2023/10/10 18:19:26 by bmabilla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/*
-** strcmp, strncmp -- compare strings
-*/
-
 #include "libft.h"
 
-int		ft_strncmp(const char *s1, const char *s2, size_t n)
+int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
-	while (*s1 && *s2 && *s1 == *s2 && (int)n > 0)
-	{
-		s1++;
-		s2++;
-		n--;
-	}
-	if (n)
-		return (*(unsigned char *)s1 - *(unsigned char *)s2);
-	else
-		return (0);
-}
+	size_t	i;
 
+	i = 0;
+	if (n == 0)
+		return (0);
+	while (s1[i] && s2[i] && i < n - 1)
+	{
+		if (s1[i] != s2[i])
+			return ((unsigned char)s1[i] - (unsigned char)s2[i]);
+		i++;
+	}
+	if (i < n)
+		return ((unsigned char)s1[i] - (unsigned char)s2[i]);
+	return (0);
+}
 /*
-** int main () {
-**    char str1[15] = "ABCdef";
-**    char str2[15] = "ABCDEF";
-**    int result;
-**
-**    result = ft_strncmp(str1, str2, 3);
-**    if(result < 0) {
-**       printf("str1 is less than str2\n");
-**    } else if(result > 0) {
-**       printf("str2 is less than str1\n");
-**    } else {
-**       printf("str1 is equal to str2\n");
-**    }
-**    printf("Value returned by strncmp() is: %d\n", result);
-**    return(0);
-** }
-*/
+int	main()
+{
+	printf("%d", ft_strncmp("tesb", "tesa", 4));
+	printf("\n");
+	printf("%d", strncmp("tesb", "tesa", 4));
+}*/
