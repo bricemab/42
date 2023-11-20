@@ -12,43 +12,41 @@
 
 CC = gcc
 
-NAME = push_swap
+NAME = libftprintf.a
 
-PRINTF = libftprintf.a
+LIBFTNAME = libft.a
 
-HEADER = push_swap.h
+HEADER = libft.h
 
 FLAGS = -Wall -Wextra -Werror
 
-SRC =	main.c args_checker.c error.c push.c reverse.c rotate.c swap.c \
-		s_lstadd_back.c s_lstnew.c s_lstlast.c
+SRC =	ft_print_char.c ft_print_hex.c ft_print_nbr.c ft_print_percent.c \
+		ft_print_ptr.c ft_print_str.c ft_print_unsigned.c ft_printf.c
 
 OBJS = $(SRC:.c=.o)
 
-FTPRINTFDIR = ./ft_printf
+LIBFTDIR = ./libft
+
+
 
 all: $(NAME)
 
-makeftprintf:
-	@make -C $(FTPRINTFDIR)
-	@cp $(FTPRINTFDIR)/$(PRINTF) .
-	@mv $(PRINTF) $(NAME)
+makelibft:
+	@make -C $(LIBFTDIR)
+	@cp $(LIBFTDIR)/$(LIBFTNAME) .
+	@mv $(LIBFTNAME) $(NAME)
 
-# $(NAME):	makeftprintf $(OBJS)
-#			@ar rc $(NAME) $(OBJS)
-#			@ranlib $(NAME)
-#			@chmod +x $(NAME)
-
-$(NAME):	makeftprintf
-			$(CC) $(FLAGS) $(SRC) $(FTPRINTFDIR)/$(PRINTF) -o $(NAME)
+$(NAME):	makelibft $(OBJS)
+			@ar rc $(NAME) $(OBJS)
+			@ranlib $(NAME)
 
 clean:
 	@rm -f $(OBJS)
-	@cd $(FTPRINTFDIR) && make clean
+	@cd $(LIBFTDIR) && make clean
 
 fclean: clean
 	@rm -f $(NAME)
-	@cd $(FTPRINTFDIR) && make fclean
+	@cd $(LIBFTDIR) && make fclean
 
 re: fclean all
 
