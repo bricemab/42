@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../includes/push_swap.h"
 
 /* do_rev_rotate_both:
 *	Reverse rotates both stack A and B until one of them is in position.

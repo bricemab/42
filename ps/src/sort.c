@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../includes/push_swap.h"
 
 /* push_all_save_three:
 *	Pushes all the elements of stack a into stack b, except the three last ones.

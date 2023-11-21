@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../includes/push_swap.h"
 
 /* free_stack:
 *	Frees each element in a given stack and sets the stack pointer to NULL.
@@ -36,11 +36,21 @@ void	free_stack(t_stack **stack)
 */
 void	exit_error(t_stack **stack_a, t_stack **stack_b)
 {
+	int		i;
+	char	*s;
+
+	s = "Error\n";
+	i = 0;
+	while (s[i] != '\0')
+	{
+		write(2, &s[i], 1);
+		i++;
+	}
 	if (stack_a == NULL || *stack_a != NULL)
 		free_stack(stack_a);
 	if (stack_b == NULL || *stack_b != NULL)
 		free_stack(stack_b);
-	write(2, "Error\n", 6);
+	//write(2, "Error\n", 6);
 	exit (1);
 }
 

@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../includes/push_swap.h"
 
 /* arg_is_number:
 *   Checks if the argument is a number. +1 1 and -1 are all valid numbers.
