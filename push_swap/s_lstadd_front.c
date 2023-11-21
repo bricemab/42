@@ -1,40 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
+/*   s_lstadd_front.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bmabilla <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/25 14:14:19 by bmabilla      #+#    #+#             */
-/*   Updated: 2023/10/25 14:14:20 by bmabilla     ###   ########.fr       */
+/*   Created: 2023/10/25 14:49:12 by bmabilla      #+#    #+#             */
+/*   Updated: 2023/10/25 14:49:13 by bmabilla     ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "push_swap.h"
 
-void	ft_putnbr_fd(int n, int fd)
+void	s_lstadd_front(t_stack **lst, t_stack *new)
 {
-	if (n == -2147483648)
-		ft_putstr_fd("-2147483648", fd);
-	else if (n < 0)
+	if (lst)
 	{
-		ft_putchar_fd('-', fd);
-		ft_putnbr_fd(-n, fd);
+		new->next = *lst;
+		*lst = new;
 	}
-	else if (n >= 10)
-	{
-		ft_putnbr_fd(n / 10, fd);
-		ft_putchar_fd(n % 10 + '0', fd);
-	}
-	else
-		ft_putchar_fd(n + '0', fd);
 }
 
-/*
-** int main()
-** {
-** 	int nmb = 432;
-** 	ft_putnbr_fd(nmb, 1);
-** 	return (0);
-** }
-*/

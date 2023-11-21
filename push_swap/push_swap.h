@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: bmabilla <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/20 13:00:47 by bmabilla          #+#    #+#             */
-/*   Updated: 2023/11/20 13:00:48 by bmabilla         ###   ########.fr       */
+/*   Created: 2023/11/20 13:00:47 by bmabilla      #+#    #+#             */
+/*   Updated: 2023/11/20 13:00:48 by bmabilla     ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ void	check_args(char	**args, int nb);
 t_stack	*s_lstlast(t_stack *lst);
 t_stack	*s_lstnew(int content, int pos);
 void	s_lstadd_back(t_stack **lst, t_stack *new);
+void	s_lstadd_front(t_stack **lst, t_stack *new);
 
 void	rra(t_stack **stack);
 
