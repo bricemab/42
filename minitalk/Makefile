@@ -27,9 +27,9 @@ OBJS = $(SRC_S:.c=.o)
 
 PRINTTFDIR = ./ft_printf
 
-
 all:
 	@make -C $(PRINTTFDIR)
+	@gcc $(FLAGS) $(CLIENT).c -o $(CLIENT) $(PRINTTFDIR)/$(PRINTFNAME)
 	@gcc $(FLAGS) $(SERVER).c -o $(SERVER) $(PRINTTFDIR)/$(PRINTFNAME)
 
 clean:
