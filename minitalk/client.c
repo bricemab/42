@@ -6,7 +6,7 @@
 /*   By: bmabilla <bmabilla@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/22 12:52:01 by bmabilla          #+#    #+#             */
-/*   Updated: 2023/11/22 15:48:20 by bmabilla         ###   ########.fr       */
+/*   Updated: 2023/11/22 15:58:04 by bmabilla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void	client_handler(int signum, siginfo_t *info, void *context)
 	ft_printf("Char has been receive\n");
 }
 
-int main(int ac, char **args)
+int	main(int ac, char **args)
 {
 	struct sigaction	sigact;
 
