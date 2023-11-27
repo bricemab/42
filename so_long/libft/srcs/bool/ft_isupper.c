@@ -1,19 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minitalk.h                                         :+:      :+:    :+:   */
+/*   ft_isupper.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bmabilla <bmabilla@student.42lausanne.c    +#+  +:+       +#+        */
+/*   By: bmabilla <bmabilla@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/22 12:40:58 by bmabilla          #+#    #+#             */
-/*   Updated: 2023/11/22 15:58:32 by bmabilla         ###   ########.fr       */
+/*   Created: 2023/10/02 18:19:09 by bmabilla          #+#    #+#             */
+/*   Updated: 2023/03/31 10:13:53 by bmabilla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINITALK_H
-# define MINITALK_H
+#include "libft.h"
 
-# include "ft_printf/ft_printf.h"
-# include "signal.h"
+/*
+	Checks for an uppercase letter.
+*/
 
-#endif
+int	ft_isupper(int c)
+{
+	if (c >= 'A' && c <= 'Z')
+		return (1);
+	return (0);
+}

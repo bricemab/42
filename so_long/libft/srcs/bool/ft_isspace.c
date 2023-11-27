@@ -1,19 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minitalk.h                                         :+:      :+:    :+:   */
+/*   ft_isspace.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bmabilla <bmabilla@student.42lausanne.c    +#+  +:+       +#+        */
+/*   By: bmabilla <bmabilla@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/22 12:40:58 by bmabilla          #+#    #+#             */
-/*   Updated: 2023/11/22 15:58:32 by bmabilla         ###   ########.fr       */
+/*   Created: 2023/01/26 13:46:19 by bmabilla          #+#    #+#             */
+/*   Updated: 2023/03/31 10:13:51 by bmabilla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINITALK_H
-# define MINITALK_H
+#include "libft.h"
 
-# include "ft_printf/ft_printf.h"
-# include "signal.h"
+/*
+	Checks if 'c' is a space (\t, \n, \v, \f, \r)
+*/
 
-#endif
+int	ft_isspace(int c)
+{
+	if ((c >= '\t' && c <= '\r') || c == ' ')
+		return (1);
+	return (0);
+}

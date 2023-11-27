@@ -1,19 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minitalk.h                                         :+:      :+:    :+:   */
+/*   ft_lstlast.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bmabilla <bmabilla@student.42lausanne.c    +#+  +:+       +#+        */
+/*   By: bmabilla <bmabilla@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/22 12:40:58 by bmabilla          #+#    #+#             */
-/*   Updated: 2023/11/22 15:58:32 by bmabilla         ###   ########.fr       */
+/*   Created: 2023/10/17 17:31:55 by bmabilla          #+#    #+#             */
+/*   Updated: 2023/03/31 10:13:17 by bmabilla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINITALK_H
-# define MINITALK_H
+#include "libft.h"
 
-# include "ft_printf/ft_printf.h"
-# include "signal.h"
+/*
+	Returns the last node of the linked list. If empty list, returns NULL.
+*/
 
-#endif
+t_list	*ft_lstlast(t_list *lst)
+{
+	if (!lst)
+		return (NULL);
+	while (lst->next)
+		lst = lst->next;
+	return (lst);
+}

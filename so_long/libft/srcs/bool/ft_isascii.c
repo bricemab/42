@@ -1,19 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minitalk.h                                         :+:      :+:    :+:   */
+/*   ft_isascii.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bmabilla <bmabilla@student.42lausanne.c    +#+  +:+       +#+        */
+/*   By: bmabilla <bmabilla@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/22 12:40:58 by bmabilla          #+#    #+#             */
-/*   Updated: 2023/11/22 15:58:32 by bmabilla         ###   ########.fr       */
+/*   Created: 2023/10/02 18:20:31 by bmabilla          #+#    #+#             */
+/*   Updated: 2023/03/31 10:13:41 by bmabilla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINITALK_H
-# define MINITALK_H
+#include "libft.h"
 
-# include "ft_printf/ft_printf.h"
-# include "signal.h"
+/*
+	Checks whether 'c' is a 7-bit unsigned char value that fits into the
+	ASCII character set
+*/
 
-#endif
+int	ft_isascii(int c)
+{
+	if (c >= 0 && c <= 127)
+		return (1);
+	return (0);
+}

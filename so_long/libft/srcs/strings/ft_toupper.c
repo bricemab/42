@@ -1,19 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minitalk.h                                         :+:      :+:    :+:   */
+/*   ft_toupper.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bmabilla <bmabilla@student.42lausanne.c    +#+  +:+       +#+        */
+/*   By: bmabilla <bmabilla@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/22 12:40:58 by bmabilla          #+#    #+#             */
-/*   Updated: 2023/11/22 15:58:32 by bmabilla         ###   ########.fr       */
+/*   Created: 2023/10/11 18:12:40 by bmabilla          #+#    #+#             */
+/*   Updated: 2023/10/12 15:05:27 by bmabilla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINITALK_H
-# define MINITALK_H
+#include "libft.h"
 
-# include "ft_printf/ft_printf.h"
-# include "signal.h"
+/*
+	If 'c' is a lowercase letter, the function returns its 
+	uppercase equivalent otherwise it returns 'c'.
+*/
 
-#endif
+int	ft_toupper(char c)
+{
+	if (ft_islower(c))
+		c -= 32;
+	return (c);
+}
