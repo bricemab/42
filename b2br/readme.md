@@ -4,15 +4,15 @@
 - Récupérer la signature de la VM
 - Mettre dans un fichier signature.txt et push sur le git du projet
 
-##### Vérifie bien que la signature est la bonne en relançant la commande sur la VM
+#### Vérifie bien que la signature est la bonne en relançant la commande sur la VM
 si c'est bon, touche plus la VM comme ça pas de problème
 
 ## Questions pendant l'évaluation
-##### Fonctionnement des machines virtuelles ?
+#### Fonctionnement des machines virtuelles ?
 C'est un environnement qui est sur notre machine physique. ELle exécute son propre OS et elle a les mêmes équipements que la machine physique. Il peut y en avoir plusieurs sur le même PC physique
-##### Différences basiques entre Debian et Rocky
+#### Différences basiques entre Debian et Rocky
 Debian est reconnu pour sa stabilité, sa sécurité et a une big commu alors que Rockyest plutot pour les environnements d'entreprise
-##### Différence entre apt et aptitude
+#### Différence entre apt et aptitude
 `apt` est un outil de gestion de package comme `aptitude`. La grosse différence est que `aptitude` est connu pour résoudre beaucoup plus facilement ces problème de dépendances
 #### A quoi sert un firewall (UFW)?
 il permet de sécurisé sa machine et ainsi controller le trafic entrante et sortant 
