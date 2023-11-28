@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bmabilla <bmabilla@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bmabilla <bmabilla>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 17:50:29 by bmabilla          #+#    #+#             */
-/*   Updated: 2023/11/14 16:09:29 by bmabilla         ###   ########.fr       */
+/*   Updated: 2023/11/28 14:12:02 by bmabilla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -316,6 +316,11 @@ int		ft_tolower(char c);
 	uppercase equivalent otherwise it returns 'c'.
 */
 int		ft_toupper(char c);
+
+/*
+	Contact str1 and str2 starting by str1
+*/
+char	*ft_strcat(char *str1, char *str2);
 
 /*-------------------------- END STRINGS -----------------------------------*/
 

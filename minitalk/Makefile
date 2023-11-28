@@ -38,6 +38,7 @@ clean:
 
 fclean: clean
 	@rm -f $(SERVER)
+	@rm -f $(CLIENT)
 	@cd $(PRINTTFDIR) && make fclean
 
 re: fclean all

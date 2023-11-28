@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: bmabilla <bmabilla@student.42.fr>          +#+  +:+       +#+         #
+#    By: bmabilla <bmabilla>                        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/16 19:55:59 by bmabilla          #+#    #+#              #
-#    Updated: 2023/11/14 18:36:18 by bmabilla         ###   ########.fr        #
+#    Updated: 2023/11/28 14:12:17 by bmabilla         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -51,7 +51,7 @@ MEM_FOLDER = mem/
 STRS_FILES = ft_atoi ft_bzero ft_itoa ft_putchar_fd ft_putendl_fd ft_putnbr_fd \
 						ft_putstr_fd ft_split ft_strchr ft_strdup ft_striteri ft_strjoin \
 						ft_strlcat ft_strlcpy ft_strlen ft_strmapi ft_strncmp ft_strnstr \
-						ft_strrchr ft_strtrim ft_substr ft_tolower ft_toupper
+						ft_strrchr ft_strtrim ft_substr ft_tolower ft_toupper ft_strcat
 STRS_FOLDER = strings/
 
 OTHER_FILES = ft_abs
