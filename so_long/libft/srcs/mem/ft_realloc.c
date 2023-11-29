@@ -1,40 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcat.c                                        :+:      :+:    :+:   */
+/*   ft_realloc.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bmabilla <bmabilla>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/28 13:42:56 by bmabilla          #+#    #+#             */
-/*   Updated: 2023/11/29 15:08:13 by bmabilla         ###   ########.fr       */
+/*   Created: 2023/11/29 13:36:55 by bmabilla          #+#    #+#             */
+/*   Updated: 2023/11/29 13:39:16 by bmabilla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/libft.h"
+#include "libft.h"
 
-char	*ft_strcat(char *str1, char *str2)
+void        *ft_realloc(void *ptr, size_t size)
 {
-	int		length;
-	char	*r;
-	int		i;
-	int		j;
+    void    *new_ptr;
 
-	length = ft_strlen(str1);
-	length += ft_strlen(str2) + 1;
-	r = malloc(sizeof(char) * length);
-	i = 0;
-	j = 0;
-	while (str1[i])
-	{
-		r[i] = str1[i];
-		i++;
-	}
-	while (str2[j])
-	{
-		r[i] = str2[j];
-		j++;
-		i++;
-	}
-	r[i] = '\0';
-	return (r);
+    if (ptr == NULL)
+        return (malloc(size));
+    if (!size)
+        return (ptr);
+    new_ptr = malloc(size);
+    ft_memcpy(new_ptr, ptr, size);
+    free(ptr);
+    return (new_ptr);
 }

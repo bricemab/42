@@ -6,7 +6,7 @@
 /*   By: bmabilla <bmabilla>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 17:50:29 by bmabilla          #+#    #+#             */
-/*   Updated: 2023/11/28 14:12:02 by bmabilla         ###   ########.fr       */
+/*   Updated: 2023/11/29 13:40:11 by bmabilla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -150,6 +150,8 @@ int		ft_lstsize(t_list *lst);
 	returns a pointer to the allocated memory. Memory is set to zero.
 */
 void	*ft_calloc(size_t nmemb, size_t size);
+
+void	*ft_realloc(void *ptr, size_t size);
 
 /*
 	Scans the initial 'n' bytes of the memory area pointed to by 's' for the 

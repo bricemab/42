@@ -6,7 +6,7 @@
 #    By: bmabilla <bmabilla>                        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/16 19:55:59 by bmabilla          #+#    #+#              #
-#    Updated: 2023/11/28 14:12:17 by bmabilla         ###   ########.fr        #
+#    Updated: 2023/11/29 13:39:43 by bmabilla         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -45,7 +45,7 @@ LIST_FILES = ft_lstadd_back ft_lstadd_front ft_lstclear ft_lstdelone \
 							ft_lstiter ft_lstlast ft_lstmap ft_lstnew ft_lstsize
 LIST_FOLDER = lists/
 
-MEM_FILES =	ft_calloc ft_memchr ft_memcmp ft_memcpy ft_memmove ft_memset
+MEM_FILES =	ft_calloc ft_memchr ft_memcmp ft_memcpy ft_memmove ft_memset ft_realloc
 MEM_FOLDER = mem/
 
 STRS_FILES = ft_atoi ft_bzero ft_itoa ft_putchar_fd ft_putendl_fd ft_putnbr_fd \
