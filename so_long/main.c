@@ -6,21 +6,13 @@
 /*   By: bmabilla <bmabilla>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 13:12:09 by bmabilla          #+#    #+#             */
-/*   Updated: 2023/11/29 16:18:21 by bmabilla         ###   ########.fr       */
+/*   Updated: 2023/11/30 14:44:01 by bmabilla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft/includes/ft_printf.h"
 #include "includes/so_long.h"
 #include "mlx/mlx.h"
-
-int	clear_map_response(t_map **map, t_res *res)
-{
-	free((*map)->path);
-	free((*map));
-	free(res);
-	return (0);
-}
 
 int	main(int count, char **args)
 {
@@ -41,7 +33,10 @@ int	main(int count, char **args)
 	response = checker_args(count, args, &map);
 	if ((*response).response == 0)
 		return (clear_map_response(&map, response));
+	clear_res_type(response);
+	response = checker_map(&map);
+	if ((*response).response == 0)
+		return (clear_map_response(&map, response));
 	clear_map_response(&map, response);
-	//checker_map(&map);
 	return (1);
 }
