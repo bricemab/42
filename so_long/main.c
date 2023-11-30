@@ -6,7 +6,7 @@
 /*   By: bmabilla <bmabilla>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 13:12:09 by bmabilla          #+#    #+#             */
-/*   Updated: 2023/11/30 14:44:01 by bmabilla         ###   ########.fr       */
+/*   Updated: 2023/11/30 14:47:38 by bmabilla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ int	main(int count, char **args)
 	t_map	*map;
 	t_res	*response = NULL;
 
+	(void)count;
+	(void)args;
 	map = malloc(sizeof(t_map));
 	response = checker_args(count, args, &map);
 	if ((*response).response == 0)
