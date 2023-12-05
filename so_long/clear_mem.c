@@ -6,7 +6,7 @@
 /*   By: bmabilla <bmabilla>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/30 14:37:26 by bmabilla          #+#    #+#             */
-/*   Updated: 2023/11/30 14:49:04 by bmabilla         ###   ########.fr       */
+/*   Updated: 2023/12/05 17:08:58 by bmabilla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,20 @@ int	clear_map_response(t_map **map, t_res *res)
 {
 	int	i;
 
-	i = 0;
-	while (i < (*map)->height)
+	init_zero(1, &i);
+	if (!((*res).code == FILE_NOT_FOUND || (*res).code == MISSING_ARGS))
 	{
-		free((*map)->map[i]);
-		i++;
+		while (i < (*map)->height)
+		{
+			free((*map)->map[i]);
+			free((*map)->points[i]);
+			i++;
+		}
+		free((*map)->points);
+		free((*map)->map);
 	}
-	free((*map)->map);
-	free((*map)->path);
+	if ((*res).code != MISSING_ARGS)
+		free((*map)->path);
 	free((*map));
 	clear_res_type(res);
 	return (0);
@@ -31,7 +37,5 @@ int	clear_map_response(t_map **map, t_res *res)
 
 void	clear_res_type(t_res *res)
 {
-	if ((*res).error_msg)
-		free((*res).error_msg);
 	free(res);
 }

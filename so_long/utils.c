@@ -6,7 +6,7 @@
 /*   By: bmabilla <bmabilla>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 13:19:31 by bmabilla          #+#    #+#             */
-/*   Updated: 2023/11/30 14:37:34 by bmabilla         ###   ########.fr       */
+/*   Updated: 2023/12/05 17:08:58 by bmabilla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,46 +17,46 @@
 void	show_map(t_map **map)
 {
 	int	i;
+	int	j;
+	t_point	point;
 
 	ft_printf("Map Height: %d\n", (*map)->height);
 	ft_printf("Map Width: %d\n", (*map)->width);
-	i = 0;
+	init_zero(2, &i, &j);
 	while (i < (*map)->height)
 	{
 		ft_printf("%s\n", (*map)->map[i]);
+		i++;
+	}
+	i = 0;
+	while (i < (*map)->height)
+	{
+		j = 0;
+		while (j < (*map)->width)
+		{
+			point = (*map)->points[i][j];
+			ft_printf("x = %d | y = %d | value = %c\n", point.x, point.y, point.value);
+			j++;
+		}
 		i++;
 	}
 }
 
 void	str_pop(char **str)
 {
-	int		i;
-	char	*res;
-
-	i = 0;
-	res = *str;
-	*str = NULL;
-	*str = malloc(sizeof(char) * ft_strlen(res));
-	while (i < ((int)ft_strlen(res) - 1))
-	{
-		(*str)[i] = res[i];
-		i++;
-	}
-	(*str)[i] = '\0';
+	(*str)[ft_strlen(*str) - 1] = '\0';
 }
 
-t_res	*error(char *str)
+t_res	*error(char *str, int code)
 {
 	t_res	*res;
 
 	res = malloc(sizeof(t_res));
 	(*res).response = 0;
-	str = ft_strcat(str, "");
+	(*res).code = code;
     ft_printf("Error\n");
 	if (ft_strlen(str) != 0)
     	ft_printf("%s\n", str);
-	(*res).error_msg = str;
-	free(str);
     return (res);
 }
 
@@ -65,10 +65,27 @@ t_res	*success(char *str)
 	t_res	*res;
 
 	res = malloc(sizeof(t_res));
-	(*res).response = 1;
+	res->response = 1;
 	str = ft_strcat(str, "");
 	if (ft_strlen(str) != 0)
     	ft_printf("%s\n", str);
 	free(str);
     return (res);
+}
+
+void	init_zero(int count, ...)
+{
+	va_list	args;
+	int		*curr;
+	int		i;
+
+	i = 0;
+	va_start(args, count);
+	while (i < count)
+	{
+		curr = va_arg(args, int *);
+		*curr = 0;
+		i++;
+	}
+	va_end(args);
 }
