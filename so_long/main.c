@@ -6,7 +6,7 @@
 /*   By: bmabilla <bmabilla>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 13:12:09 by bmabilla          #+#    #+#             */
-/*   Updated: 2023/12/05 17:08:58 by bmabilla         ###   ########.fr       */
+/*   Updated: 2023/12/05 17:25:14 by bmabilla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,10 @@ int	main(int count, char **args)
 		return (clear_map_response(&map, response));
 	clear_res_type(response);
 	response = checker_map(&map);
+	if ((*response).response == 0)
+		return (clear_map_response(&map, response));
+	clear_res_type(response);
+	response = checker_pathfinding(&map);
 	if ((*response).response == 0)
 		return (clear_map_response(&map, response));
 	return (clear_map_response(&map, response));

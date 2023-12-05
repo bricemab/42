@@ -6,7 +6,7 @@
 #    By: bmabilla <bmabilla>                        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/27 13:21:24 by bmabilla          #+#    #+#              #
-#    Updated: 2023/12/05 17:08:58 by bmabilla         ###   ########.fr        #
+#    Updated: 2023/12/05 17:26:51 by bmabilla         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,8 @@ NAME	= so_long
 CC		= gcc
 FLAGS	= -Wall -Wextra -Werror
 RM		= rm -f
-SRCS	= main checker_args checker_map utils checker_map_build clear_mem
+SRCS	= main checker_args checker_map utils checker_map_build clear_mem \
+			checker_pathfinding
 LIBFT	= ./libft/libft.a
 MLX		= ./mlx/libmlx.a
 HEARDERS	= -I includes -I ./libft/includes -I ./mlx

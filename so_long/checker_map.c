@@ -6,7 +6,7 @@
 /*   By: bmabilla <bmabilla>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 13:17:53 by bmabilla          #+#    #+#             */
-/*   Updated: 2023/12/05 17:08:58 by bmabilla         ###   ########.fr       */
+/*   Updated: 2023/12/05 17:24:38 by bmabilla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ t_res	*read_lines(t_map **map, int fd)
 			str_pop(&line);
 		res = add_new_line(map, &line);
 	}
-	return (success("read_lines() => SUCCESS"));
+	return (success(""));
 }
 
 t_res	*checker_map(t_map **map)
@@ -105,6 +105,9 @@ t_res	*checker_map(t_map **map)
 	close(map_fd);
 	clear_res_type(res);
 	create_points(map);
-	show_map(map);
-	return (checker_map_build(map));
+	//show_map(map);
+	res = checker_map_build(map);
+	if (res->response == 0)
+		return (res);
+	return (success("Checker_map() => OK"));
 }

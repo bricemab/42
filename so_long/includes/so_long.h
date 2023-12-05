@@ -6,7 +6,7 @@
 /*   By: bmabilla <bmabilla>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 13:14:58 by bmabilla          #+#    #+#             */
-/*   Updated: 2023/12/05 17:08:58 by bmabilla         ###   ########.fr       */
+/*   Updated: 2023/12/05 17:26:33 by bmabilla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,5 +84,8 @@ t_res	*checker_map(t_map **map);
 t_res	*round_by_walls(t_map **map);
 t_res	*checker_map_build(t_map **map);
 t_res	*has_spawn_exit_items(t_map **map);
+
+// Checker_pathfinding
+t_res	*checker_pathfinding(t_map **map);
 
 #endif
