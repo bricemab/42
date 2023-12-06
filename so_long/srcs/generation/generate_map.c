@@ -6,7 +6,7 @@
 /*   By: bmabilla <bmabilla>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/06 12:04:15 by bmabilla          #+#    #+#             */
-/*   Updated: 2023/12/06 13:54:56 by bmabilla         ###   ########.fr       */
+/*   Updated: 2023/12/06 14:04:11 by bmabilla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ char	*get_correct_map_image(t_map **map, int x, int y)
 
 	ptn = (*map)->points[y][x];
 	if (ptn.value == '1')
-		return ("./images/wall_50x50.xpm");
+		return ("./images/wall.xpm");
 	else if (ptn.value == '0')
 		return ("./images/ground_50x50.xpm");
 	else if (ptn.value == 'P')
