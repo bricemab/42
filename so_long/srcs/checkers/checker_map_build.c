@@ -6,11 +6,11 @@
 /*   By: bmabilla <bmabilla>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/30 13:33:05 by bmabilla          #+#    #+#             */
-/*   Updated: 2023/12/05 17:08:58 by bmabilla         ###   ########.fr       */
+/*   Updated: 2023/12/06 11:55:56 by bmabilla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/so_long.h"
+#include "../../includes/so_long.h"
 
 t_res	*round_by_walls(t_map **map)
 {

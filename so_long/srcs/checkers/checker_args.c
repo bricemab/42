@@ -6,13 +6,11 @@
 /*   By: bmabilla <bmabilla>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 13:18:51 by bmabilla          #+#    #+#             */
-/*   Updated: 2023/12/05 17:08:58 by bmabilla         ###   ########.fr       */
+/*   Updated: 2023/12/06 11:57:41 by bmabilla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/so_long.h"
-#include "libft/includes/gnl.h"
-#include "libft/includes/libft.h"
+#include "../../includes/so_long.h"
 
 t_res	*checker_args(int count, char **args, t_map **map)
 {

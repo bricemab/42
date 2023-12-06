@@ -6,13 +6,13 @@
 /*   By: bmabilla <bmabilla>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 13:19:31 by bmabilla          #+#    #+#             */
-/*   Updated: 2023/12/05 17:08:58 by bmabilla         ###   ########.fr       */
+/*   Updated: 2023/12/06 11:56:32 by bmabilla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/so_long.h"
-#include "libft/includes/ft_printf.h"
-#include "libft/includes/libft.h"
+#include "../../includes/so_long.h"
+#include "../../libft/includes/ft_printf.h"
+#include "../../libft/includes/libft.h"
 
 void	show_map(t_map **map)
 {

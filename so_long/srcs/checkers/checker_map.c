@@ -6,13 +6,12 @@
 /*   By: bmabilla <bmabilla>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 13:17:53 by bmabilla          #+#    #+#             */
-/*   Updated: 2023/12/05 17:24:38 by bmabilla         ###   ########.fr       */
+/*   Updated: 2023/12/06 11:57:50 by bmabilla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <fcntl.h>
-#include "libft/includes/gnl.h"
-#include "includes/so_long.h"
+#include "../../includes/so_long.h"
 
 t_point	*create_point(int x, int y, char c)
 {

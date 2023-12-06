@@ -6,11 +6,10 @@
 /*   By: bmabilla <bmabilla>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 13:12:09 by bmabilla          #+#    #+#             */
-/*   Updated: 2023/12/05 17:25:14 by bmabilla         ###   ########.fr       */
+/*   Updated: 2023/12/06 13:27:41 by bmabilla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft/includes/ft_printf.h"
 #include "includes/so_long.h"
 #include "mlx/mlx.h"
 
@@ -45,5 +44,6 @@ int	main(int count, char **args)
 	response = checker_pathfinding(&map);
 	if ((*response).response == 0)
 		return (clear_map_response(&map, response));
+	generate_map(&map);
 	return (clear_map_response(&map, response));
 }

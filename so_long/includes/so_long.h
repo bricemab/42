@@ -6,7 +6,7 @@
 /*   By: bmabilla <bmabilla>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 13:14:58 by bmabilla          #+#    #+#             */
-/*   Updated: 2023/12/05 17:26:33 by bmabilla         ###   ########.fr       */
+/*   Updated: 2023/12/06 13:36:53 by bmabilla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,11 @@
 # include <stdlib.h>
 # include <stdarg.h>
 # include "../libft/includes/libft.h"
+# include "../libft/includes/ft_printf.h"
+# include "../libft/includes/gnl.h"
+# include "../mlx/mlx.h"
 
+// Codes errors
 # define MAP_NOT_LOAD 500
 # define FILE_NOT_FOUND 501
 # define MISSING_ARGS 502
@@ -28,12 +32,16 @@
 # define MAP_NOT_ROUND_BY_WALL 508
 # define MAP_INVALID_PATHFINDING 509
 
+// Map Settings
 # define MAP_WALL_CHAR '1'
 # define MAP_SPACE_CHAR '0'
 # define MAP_SPAWN_CHAR 'P'
 # define MAP_EXIT_CHAR 'E'
 # define MAP_ITEM_CHAR 'C'
+# define MAP_IMAGE_SIZE 50
+# define IMG_SIZE 50
 
+// Response type
 typedef struct s_res {
 	int		response;
 	void	*data;
@@ -41,12 +49,14 @@ typedef struct s_res {
 	int		code;
 }				t_res;
 
+// Point on map
 typedef struct s_point {
 	int		x;
 	int		y;
 	char	value;
 }				t_point;
 
+// Structur of the map
 typedef struct s_map {
 	char	**map;
 	int		height;
@@ -54,6 +64,11 @@ typedef struct s_map {
 	char	*path;
 	t_point	**points;
 }				t_map;
+
+typedef struct s_mlx {
+	void	*mlx;
+	void	*win;
+}				t_mlx;
 
 typedef struct s_data {
 	void	*img;
@@ -87,5 +102,8 @@ t_res	*has_spawn_exit_items(t_map **map);
 
 // Checker_pathfinding
 t_res	*checker_pathfinding(t_map **map);
+
+// Generate_map
+void	generate_map(t_map **map);
 
 #endif
