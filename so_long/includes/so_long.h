@@ -6,7 +6,7 @@
 /*   By: bmabilla <bmabilla>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 13:14:58 by bmabilla          #+#    #+#             */
-/*   Updated: 2023/12/06 13:36:53 by bmabilla         ###   ########.fr       */
+/*   Updated: 2023/12/06 14:08:22 by bmabilla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@
 
 // Map Settings
 # define MAP_WALL_CHAR '1'
-# define MAP_SPACE_CHAR '0'
+# define MAP_GROUND_CHAR '0'
 # define MAP_SPAWN_CHAR 'P'
 # define MAP_EXIT_CHAR 'E'
 # define MAP_ITEM_CHAR 'C'

@@ -6,7 +6,7 @@
 /*   By: bmabilla <bmabilla>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/06 12:04:15 by bmabilla          #+#    #+#             */
-/*   Updated: 2023/12/06 14:04:11 by bmabilla         ###   ########.fr       */
+/*   Updated: 2023/12/06 14:10:24 by bmabilla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,11 @@ void	create_img(t_mlx *mlx, int x, int y, char *path)
 
 	l = MAP_IMAGE_SIZE;
 	img = mlx_xpm_file_to_image(mlx->mlx, path, &img_width, &img_height);
+	if (!img)
+	{
+		ft_printf("%s not found", path);
+		return;
+	}
 	mlx_put_image_to_window(mlx->mlx, mlx->win, img, l * x, l * y);
 }
 
@@ -29,16 +34,16 @@ char	*get_correct_map_image(t_map **map, int x, int y)
 	t_point	ptn;
 
 	ptn = (*map)->points[y][x];
-	if (ptn.value == '1')
-		return ("./images/wall.xpm");
-	else if (ptn.value == '0')
+	if (ptn.value == MAP_WALL_CHAR)
+		return ("./images/wall_50x50.xpm");
+	else if (ptn.value == MAP_GROUND_CHAR)
 		return ("./images/ground_50x50.xpm");
-	else if (ptn.value == 'P')
+	else if (ptn.value == MAP_SPAWN_CHAR)
 		return ("./images/char_50x50.xpm");
-	else if (ptn.value == 'E')
+	else if (ptn.value == MAP_EXIT_CHAR)
 		return ("./images/door_50x50.xpm");
-	else if (ptn.value == 'C')
-		return ("./images/coins_50x50.xpm");
+	else if (ptn.value == MAP_ITEM_CHAR)
+		return ("./images/item_50x50.xpm");
 	else
 		return ("./images/wall_50x50.xpm");
 }
@@ -63,7 +68,6 @@ void	generate_map(t_map **map)
 		j = 0;
 		while (j < (*map)->width)
 		{
-			printf("%s\n", get_correct_map_image(map, j, i));
 			create_img(mlx, j, i, get_correct_map_image(map, j, i));
 			j++;
 		}
