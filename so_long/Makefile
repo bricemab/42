@@ -37,7 +37,7 @@ all:
 #	$(CC) $(FLAGS) $(SRCS) -o $(NAME) $(LIBFT) $(MLX)
 
 %.o: %.c
-	#$(CC) -Wall -Wextra -Werror -Imlx -c $< -o $@ $(SRCS) -o $(NAME) $(LIBFT)
+#	$(CC) -Wall -Wextra -Werror -Imlx -c $< -o $@ $(SRCS) -o $(NAME) $(LIBFT)
 	$(CC) -Wall -Wextra -Werror -I/usr/include -Imlx_linux -O3 -c $< -o $@ $(SRCS) -o $(NAME) $(LIBFT)
 
 clean:
