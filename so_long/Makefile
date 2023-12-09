@@ -10,7 +10,6 @@
 #                                                                              #
 # **************************************************************************** #
 
-OS		= linux
 NAME	= so_long
 CC		= gcc
 FLAGS	= -Wall -Wextra -Werror
@@ -24,22 +23,13 @@ UTILS_PATH = srcs/utils/
 UTILS	= utils clear_mem
 LIBFT	= ./libft/libft.a
 MLX		= ./mlx/libmlx.a
-MLX_LNX		= ./mlx-linux/libmlx.a
 HEARDERS	= -I includes -I ./libft/includes -I ./mlx
 
 all:
 	@clear
 	@make -C ./libft
-#	ifeq ($(OS), linux)
-		@make -C ./mlx-linux
-#	else
-#		@make -C ./mlx
-#	endif
-#	ifeq ($(OS), linux)
-		$(CC) $(FLAGS) -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz $(addsuffix .c, $(SRCS)) $(addprefix $(UTILS_PATH), $(addsuffix .c, $(UTILS))) $(addprefix $(GENERATION_PATH), $(addsuffix .c, $(GENERATION))) $(addprefix $(CHECKERS_PATH), $(addsuffix .c, $(CHECKERS))) $(MLX_LNX) $(LIBFT) -o $(NAME)
-#	else
-#		$(CC) $(FLAGS) -Lmlx -lmlx -framework OpenGL -framework AppKit $(addsuffix .c, $(SRCS)) $(addprefix $(UTILS_PATH), $(addsuffix .c, $(UTILS))) $(addprefix $(GENERATION_PATH), $(addsuffix .c, $(GENERATION))) $(addprefix $(CHECKERS_PATH), $(addsuffix .c, $(CHECKERS))) $(MLX) $(LIBFT) -o $(NAME)
-#	endif
+	@make -C ./mlx
+	$(CC) $(FLAGS) -Lmlx -lmlx -framework OpenGL -framework AppKit $(addsuffix .c, $(SRCS)) $(addprefix $(UTILS_PATH), $(addsuffix .c, $(UTILS))) $(addprefix $(GENERATION_PATH), $(addsuffix .c, $(GENERATION))) $(addprefix $(CHECKERS_PATH), $(addsuffix .c, $(CHECKERS))) $(MLX) $(LIBFT) -o $(NAME)
 #	$(CC) $(FLAGS) $(SRCS) -o $(NAME) $(LIBFT) $(MLX)
 
 %.o: %.c
