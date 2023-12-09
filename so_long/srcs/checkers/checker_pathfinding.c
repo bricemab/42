@@ -16,6 +16,7 @@ void	visiteNode(int x, int y, int items, t_map **map)
 {
 	t_point	*point;
 
+	point = malloc(sizeof(t_point));
 	*point = (*map)->points[y][x];
 	if (x < 0 || y < 0 || y >= (*map)->height || x >= (*map)->width)
 		return ;
@@ -40,6 +41,7 @@ t_res	*checker_pathfinding(t_map **map)
 {
 	t_point	*spawn;
 
+	spawn = malloc(sizeof(t_point));
 	*spawn = (*map)->spawn;
 	visiteNode(spawn->x, spawn->y, 0, map);
 	if ((*map)->valid_exit == 1)
