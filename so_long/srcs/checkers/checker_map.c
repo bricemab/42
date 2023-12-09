@@ -18,8 +18,8 @@ t_point	*create_point(int x, int y, t_map **map)
 	t_point	*point;
 	char	c;
 
-	c = (*map)->map[i][j];
-	point = malloc(sizeof(t_point));
+	c = (*map)->map[y][i];
+	*point = malloc(sizeof(t_point));
 	if (!point)
 		return (NULL);
 	point->x = x;
@@ -110,8 +110,8 @@ t_res	*checker_map(t_map **map)
 	res = read_lines(map, map_fd);
 	close(map_fd);
 	clear_res_type(res);
-	(*map)->spawn = malloc(sizeof(t_point));
-	(*map)->exit = malloc(sizeof(t_point));
+//	(*map)->spawn = malloc(sizeof(t_point));
+//	(*map)->exit = malloc(sizeof(t_point));
 	if (!(*map)->spawn || !(*map)->exit)
 		return (error("error on malloc", MALLOC_ERROR));
 	create_points(map);
