@@ -30,16 +30,16 @@ HEARDERS	= -I includes -I ./libft/includes -I ./mlx
 all:
 	@clear
 	@make -C ./libft
-	ifeq ($(OS), linux)
+#	ifeq ($(OS), linux)
 		@make -C ./mlx-linux
-	else
-		@make -C ./mlx
-	endif
-	ifeq ($(OS), linux)
+#	else
+#		@make -C ./mlx
+#	endif
+#	ifeq ($(OS), linux)
 		$(CC) $(FLAGS) -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz $(addsuffix .c, $(SRCS)) $(addprefix $(UTILS_PATH), $(addsuffix .c, $(UTILS))) $(addprefix $(GENERATION_PATH), $(addsuffix .c, $(GENERATION))) $(addprefix $(CHECKERS_PATH), $(addsuffix .c, $(CHECKERS))) $(MLX_LNX) $(LIBFT) -o $(NAME)
-	else
-		$(CC) $(FLAGS) -Lmlx -lmlx -framework OpenGL -framework AppKit $(addsuffix .c, $(SRCS)) $(addprefix $(UTILS_PATH), $(addsuffix .c, $(UTILS))) $(addprefix $(GENERATION_PATH), $(addsuffix .c, $(GENERATION))) $(addprefix $(CHECKERS_PATH), $(addsuffix .c, $(CHECKERS))) $(MLX) $(LIBFT) -o $(NAME)
-	endif
+#	else
+#		$(CC) $(FLAGS) -Lmlx -lmlx -framework OpenGL -framework AppKit $(addsuffix .c, $(SRCS)) $(addprefix $(UTILS_PATH), $(addsuffix .c, $(UTILS))) $(addprefix $(GENERATION_PATH), $(addsuffix .c, $(GENERATION))) $(addprefix $(CHECKERS_PATH), $(addsuffix .c, $(CHECKERS))) $(MLX) $(LIBFT) -o $(NAME)
+#	endif
 #	$(CC) $(FLAGS) $(SRCS) -o $(NAME) $(LIBFT) $(MLX)
 
 %.o: %.c
