@@ -23,7 +23,7 @@ UTILS_PATH = srcs/utils/
 UTILS	= utils clear_mem
 LIBFT	= ./libft/libft.a
 MLX		= ./mlx/libmlx.a
-MLX_LINUX = ./mlx_linux/libmlx.a
+MLX_LINUX = ./mlx_linux/libmlx_Linux.a
 HEARDERS	= -I includes -I ./libft/includes -I ./mlx
 HEARDERS_LINUX	= -I includes -I ./libft/includes -I ./mlx_linux
 
