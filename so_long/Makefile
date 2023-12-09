@@ -43,7 +43,8 @@ all:
 #	$(CC) $(FLAGS) $(SRCS) -o $(NAME) $(LIBFT) $(MLX)
 
 %.o: %.c
-	$(CC) -Wall -Wextra -Werror -Imlx -c $< -o $@ $(SRCS) -o $(NAME) $(LIBFT)
+#	$(CC) -Wall -Wextra -Werror -Imlx -c $< -o $@ $(SRCS) -o $(NAME) $(LIBFT)
+	$(CC) -Wall -Wextra -Werror -Imlx -c $< -o $@
 
 clean:
 	@clear
