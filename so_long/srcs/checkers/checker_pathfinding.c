@@ -40,7 +40,7 @@ t_res	*checker_pathfinding(t_map **map)
 {
 	t_point	*spawn;
 
-	spawn = (*map)->spawn;
+	*spawn = (*map)->spawn;
 	visiteNode(spawn->x, spawn->y, 0, map);
 	if ((*map)->valid_exit == 1)
 		return (error("", MAP_PATHFINDING_ERROR));

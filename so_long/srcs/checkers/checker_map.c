@@ -19,7 +19,7 @@ t_point	*create_point(int x, int y, t_map **map)
 	char	c;
 
 	c = (*map)->map[y][x];
-	*point = malloc(sizeof(t_point));
+    point = malloc(sizeof(t_point));
 	if (!point)
 		return (NULL);
 	point->x = x;
