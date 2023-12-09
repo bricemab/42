@@ -81,6 +81,7 @@ DEPS		= $(addprefix $(OBJS_PATH), $(SRCS_NAMES:.c=.d))
 #------------------------------------------------------------------------------#
 all: $(NAME)
 	@echo "\n$(BOLD)$(GREEN)[ ✔ ]\tLIBFT$(RESET)"
+	@echo "$(DEF_COLOR)"
 
 $(NAME): $(HEADER) $(OBJS)
 		@ar rcs $(NAME) $(OBJS)
