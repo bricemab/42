@@ -27,7 +27,7 @@ void	visiteNode(int x, int y, int items, t_map **map)
 		items++;
 	if (point->value == MAP_EXIT_CHAR)
 		(*map)->valid_exit = 1;
-	if (items === (*map)->nbr_items)
+	if (items == (*map)->nbr_items)
 		(*map)->valid_items = 1;
 	point->treated = 1;
 	visiteNode(x, y + 1, items, map);
