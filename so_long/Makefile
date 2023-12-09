@@ -32,9 +32,12 @@ all:
 	@make -C ./libft
 	ifeq ($(OS), linux)
 		@make -C ./mlx-linux
-		$(CC) $(FLAGS) -Lmlx -lmlx -framework OpenGL -framework AppKit $(addsuffix .c, $(SRCS)) $(addprefix $(UTILS_PATH), $(addsuffix .c, $(UTILS))) $(addprefix $(GENERATION_PATH), $(addsuffix .c, $(GENERATION))) $(addprefix $(CHECKERS_PATH), $(addsuffix .c, $(CHECKERS))) $(MLX) $(LIBFT) -o $(NAME)
 	else
 		@make -C ./mlx
+	endif
+	ifeq ($(OS), linux)
+		$(CC) $(FLAGS) -Lmlx -lmlx -framework OpenGL -framework AppKit $(addsuffix .c, $(SRCS)) $(addprefix $(UTILS_PATH), $(addsuffix .c, $(UTILS))) $(addprefix $(GENERATION_PATH), $(addsuffix .c, $(GENERATION))) $(addprefix $(CHECKERS_PATH), $(addsuffix .c, $(CHECKERS))) $(MLX) $(LIBFT) -o $(NAME)
+	else
 		$(CC) $(FLAGS) -Lmlx -lmlx -framework OpenGL -framework AppKit $(addsuffix .c, $(SRCS)) $(addprefix $(UTILS_PATH), $(addsuffix .c, $(UTILS))) $(addprefix $(GENERATION_PATH), $(addsuffix .c, $(GENERATION))) $(addprefix $(CHECKERS_PATH), $(addsuffix .c, $(CHECKERS))) $(MLX) $(LIBFT) -o $(NAME)
 	endif
 #	$(CC) $(FLAGS) $(SRCS) -o $(NAME) $(LIBFT) $(MLX)
