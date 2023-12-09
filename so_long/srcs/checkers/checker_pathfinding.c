@@ -16,7 +16,7 @@ void	visiteNode(int x, int y, int items, t_map **map)
 {
 	t_point	*point;
 
-	point = (*map)->points[y][x];
+	*point = (*map)->points[y][x];
 	if (x < 0 || y < 0 || y >= (*map)->height || x >= (*map)->width)
 		return ;
 	if (point->treated == 1)
