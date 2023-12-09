@@ -21,11 +21,11 @@ void	visiteNode(int x, int y, int items, t_map **map)
 		return ;
 	if (point->treated == 1)
 		return ;
-	if (point.value == MAP_WALL_CHAR)
+	if (point->value == MAP_WALL_CHAR)
 		return ;
-	if (point.value == MAP_ITEM_CHAR)
+	if (point->value == MAP_ITEM_CHAR)
 		items++;
-	if (point.value == MAP_EXIT_CHAR)
+	if (point->value == MAP_EXIT_CHAR)
 		(*map)->valid_exit = 1;
 	if (items === (*map)->nbr_items)
 		(*map)->valid_items = 1;
@@ -41,7 +41,7 @@ t_res	*checker_pathfinding(t_map **map)
 	t_point	*spawn;
 
 	spawn = (*map)->spawn;
-	visiteNode(spawn.x, spawn.y, 0, map);
+	visiteNode(spawn->x, spawn->y, 0, map);
 	if ((*map)->valid_exit == 1)
 		return (error("", MAP_PATHFINDING_ERROR));
 	if ((*map)->valid_exit == 1)
