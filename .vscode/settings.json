@@ -1,4 +1,7 @@
 {
     "javascript.suggest.completeFunctionCalls": true,
-    "typescript.suggest.completeFunctionCalls": true
+    "typescript.suggest.completeFunctionCalls": true,
+    "files.associations": {
+        "so_long.h": "c"
+    }
 }

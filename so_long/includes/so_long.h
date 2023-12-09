@@ -29,8 +29,11 @@
 # define MAP_MISSING_SPAWN 505
 # define MAP_MISSING_EXIT 506
 # define MAP_MISSING_ITEMS 507
-# define MAP_NOT_ROUND_BY_WALL 508
-# define MAP_INVALID_PATHFINDING 509
+# define MAP_PATHFINDING_ERROR 508
+# define MAP_NRB_iTEMS_ERROR 509
+# define MAP_NOT_ROUND_BY_WALL 510
+# define MAP_INVALID_PATHFINDING 511
+# define MALLOC_ERROR 512
 
 // Map Settings
 # define MAP_WALL_CHAR '1'
@@ -54,6 +57,7 @@ typedef struct s_point {
 	int		x;
 	int		y;
 	char	value;
+	int		treated;
 }				t_point;
 
 // Structur of the map
@@ -61,7 +65,12 @@ typedef struct s_map {
 	char	**map;
 	int		height;
 	int		width;
+	int		nbr_items;
+	int		valid_exit;
+	int		valid_items;
 	char	*path;
+	t_point	spawn;
+	t_point	exit;
 	t_point	**points;
 }				t_map;
 

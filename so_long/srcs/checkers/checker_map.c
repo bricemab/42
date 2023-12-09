@@ -13,15 +13,22 @@
 #include <fcntl.h>
 #include "../../includes/so_long.h"
 
-t_point	*create_point(int x, int y, char c)
+t_point	*create_point(int x, int y, t_map **map)
 {
 	t_point	*point;
+	char	c;
 
+	c = (*map)->map[i][j];
 	point = malloc(sizeof(t_point));
 	if (!point)
 		return (NULL);
 	point->x = x;
 	point->y = y;
+	point->treated = 0;
+	if (c == MAP_ITEM_CHAR)
+		(*map)->nbr_items++;
+	if (c == MAP_SPAWN_CHAR)
+		
 	point->value = c;
 	return (point);
 }
@@ -41,7 +48,7 @@ void	create_points(t_map **map)
 		j = 0;
 		while (j < (*map)->width)
 		{
-			point = create_point(j, i, (*map)->map[i][j]);
+			point = create_point(j, i, map);
 			(*map)->points[i][j] = *point;
 			free(point);
 			j++;
@@ -103,6 +110,10 @@ t_res	*checker_map(t_map **map)
 	res = read_lines(map, map_fd);
 	close(map_fd);
 	clear_res_type(res);
+	(*map)->spawn = malloc(sizeof(t_point));
+	(*map)->exit = malloc(sizeof(t_point));
+	if (!(*map)->spawn || !(*map)->exit)
+		return (error("error on malloc", MALLOC_ERROR));
 	create_points(map);
 	//show_map(map);
 	res = checker_map_build(map);
