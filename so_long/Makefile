@@ -25,11 +25,13 @@ LIBFT	= ./libft/libft.a
 MLX		= ./mlx/libmlx.a
 MLX_LINUX = ./mlx-linux/libmlx.a
 HEARDERS	= -I includes -I ./libft/includes -I ./mlx
+HEARDERS_LINUX	= -I includes -I ./libft/includes -I ./mlx-linux
 
 all:
 	@clear
 	@make -C ./libft
-	@make -C ./mlx
+	#@make -C ./mlx
+	@make -C ./mlx-linux
 #	$(CC) $(FLAGS) -Lmlx -lmlx -framework OpenGL -framework AppKit $(addsuffix .c, $(SRCS)) $(addprefix $(UTILS_PATH), $(addsuffix .c, $(UTILS))) $(addprefix $(GENERATION_PATH), $(addsuffix .c, $(GENERATION))) $(addprefix $(CHECKERS_PATH), $(addsuffix .c, $(CHECKERS))) $(MLX) $(LIBFT) -o $(NAME)
 	$(CC) $(FLAGS) -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz $(addsuffix .c, $(SRCS)) $(addprefix $(UTILS_PATH), $(addsuffix .c, $(UTILS))) $(addprefix $(GENERATION_PATH), $(addsuffix .c, $(GENERATION))) $(addprefix $(CHECKERS_PATH), $(addsuffix .c, $(CHECKERS))) $(MLX_LINUX) $(LIBFT) -o $(NAME)
 #	$(CC) $(FLAGS) $(SRCS) -o $(NAME) $(LIBFT) $(MLX)
