@@ -6,7 +6,7 @@
 /*   By: bmabilla <bmabilla>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 13:17:53 by bmabilla          #+#    #+#             */
-/*   Updated: 2023/12/06 11:57:50 by bmabilla         ###   ########.fr       */
+/*   Updated: 2023/12/12 12:35:49 by bmabilla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,7 @@ t_point	*create_point(int x, int y, t_map **map)
 	point->treated = 0;
 	if (c == MAP_ITEM_CHAR)
 		(*map)->nbr_items++;
-	if (c == MAP_SPAWN_CHAR)
-		
+//	if (c == MAP_SPAWN_CHAR)
 	point->value = c;
 	return (point);
 }
@@ -50,6 +49,10 @@ void	create_points(t_map **map)
 		{
 			point = create_point(j, i, map);
 			(*map)->points[i][j] = *point;
+			if (point->value == MAP_EXIT_CHAR)
+				(*map)->exit = *point;
+			if (point->value == MAP_SPAWN_CHAR)
+				(*map)->spawn = *point;
 			free(point);
 			j++;
 		}
@@ -110,9 +113,9 @@ t_res	*checker_map(t_map **map)
 	res = read_lines(map, map_fd);
 	close(map_fd);
 	clear_res_type(res);
-//	(*map)->spawn = malloc(sizeof(t_point));
-//	(*map)->exit = malloc(sizeof(t_point));
-	/*if (!(*map)->spawn || !(*map)->exit)
+	/*(*map)->spawn = malloc(sizeof(t_point));
+	(*map)->exit = malloc(sizeof(t_point));
+	if (!(*map)->spawn || !(*map)->exit)
 		return (error("error on malloc", MALLOC_ERROR));*/
 	create_points(map);
 	//show_map(map);

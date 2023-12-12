@@ -6,7 +6,7 @@
 /*   By: bmabilla <bmabilla>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 13:18:51 by bmabilla          #+#    #+#             */
-/*   Updated: 2023/12/06 11:57:41 by bmabilla         ###   ########.fr       */
+/*   Updated: 2023/12/12 12:28:16 by bmabilla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ t_res	*checker_args(int count, char **args, t_map **map)
 		return (error("checker_args() => argv must egals 2", MISSING_ARGS));
 	filename = ft_strcat(args[1], ".ber");
 	(*map)->path = ft_strcat("./maps/", filename);
+	(*map)->valid_exit = 0;
+	(*map)->valid_items = 0;
 	free(filename);
 	map_fd = open((*map)->path, O_RDONLY);
 	if (map_fd < 0)
