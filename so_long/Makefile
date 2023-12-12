@@ -23,22 +23,16 @@ UTILS_PATH = srcs/utils/
 UTILS	= utils clear_mem
 LIBFT	= ./libft/libft.a
 MLX		= ./mlx/libmlx.a
-MLX_LINUX = ./mlx_linux/libmlx_Linux.a
 HEARDERS	= -I includes -I ./libft/includes -I ./mlx
-HEARDERS_LINUX	= -I includes -I ./libft/includes -I ./mlx_linux
 
 all:
 	@clear
 	@make -C ./libft
 	@make -C ./mlx
-#	@make -C ./mlx_linux
-	$(CC) $(FLAGS) -Lmlx -lmlx -framework OpenGL -framework AppKit $(addsuffix .c, $(SRCS)) $(addprefix $(UTILS_PATH), $(addsuffix .c, $(UTILS))) $(addprefix $(GENERATION_PATH), $(addsuffix .c, $(GENERATION))) $(addprefix $(CHECKERS_PATH), $(addsuffix .c, $(CHECKERS))) $(MLX) $(LIBFT) -o $(NAME)
-#	$(CC) $(FLAGS) -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz $(addsuffix .c, $(SRCS)) $(addprefix $(UTILS_PATH), $(addsuffix .c, $(UTILS))) $(addprefix $(GENERATION_PATH), $(addsuffix .c, $(GENERATION))) $(addprefix $(CHECKERS_PATH), $(addsuffix .c, $(CHECKERS))) $(MLX_LINUX) $(LIBFT) -o $(NAME)
-#	$(CC) $(FLAGS) $(SRCS) -o $(NAME) $(LIBFT) $(MLX)
+	$(CC) $(FLAGS) -g -Lmlx -lmlx -framework OpenGL -framework AppKit $(addsuffix .c, $(SRCS)) $(addprefix $(UTILS_PATH), $(addsuffix .c, $(UTILS))) $(addprefix $(GENERATION_PATH), $(addsuffix .c, $(GENERATION))) $(addprefix $(CHECKERS_PATH), $(addsuffix .c, $(CHECKERS))) $(MLX) $(LIBFT) -o $(NAME)
 
 %.o: %.c
 	$(CC) -Wall -Wextra -Werror -Imlx -c $< -o $@ $(SRCS) -o $(NAME) $(LIBFT)
-#	$(CC) -Wall -Wextra -Werror -I/usr/include -Imlx_linux -O3 -c $< -o $@ $(SRCS) -o $(NAME) $(LIBFT)
 
 clean:
 	@clear

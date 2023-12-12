@@ -6,7 +6,7 @@
 /*   By: bmabilla <bmabilla>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 13:14:58 by bmabilla          #+#    #+#             */
-/*   Updated: 2023/12/12 12:35:27 by bmabilla         ###   ########.fr       */
+/*   Updated: 2023/12/12 13:53:36 by bmabilla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@
 # define MAP_MISSING_EXIT 506
 # define MAP_MISSING_ITEMS 507
 # define MAP_PATHFINDING_ERROR 508
-# define MAP_NRB_iTEMS_ERROR 509
+# define MAP_NBR_ITEMS_ERROR 509
 # define MAP_NOT_ROUND_BY_WALL 510
 # define MAP_INVALID_PATHFINDING 511
 # define MALLOC_ERROR 512

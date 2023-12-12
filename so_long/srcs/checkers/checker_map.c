@@ -6,7 +6,7 @@
 /*   By: bmabilla <bmabilla>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 13:17:53 by bmabilla          #+#    #+#             */
-/*   Updated: 2023/12/12 12:35:49 by bmabilla         ###   ########.fr       */
+/*   Updated: 2023/12/12 13:49:53 by bmabilla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ t_point	*create_point(int x, int y, t_map **map)
 	char	c;
 
 	c = (*map)->map[y][x];
-    point = malloc(sizeof(t_point));
+	point = malloc(sizeof(t_point));
 	if (!point)
 		return (NULL);
 	point->x = x;
@@ -27,7 +27,6 @@ t_point	*create_point(int x, int y, t_map **map)
 	point->treated = 0;
 	if (c == MAP_ITEM_CHAR)
 		(*map)->nbr_items++;
-//	if (c == MAP_SPAWN_CHAR)
 	point->value = c;
 	return (point);
 }
@@ -113,12 +112,7 @@ t_res	*checker_map(t_map **map)
 	res = read_lines(map, map_fd);
 	close(map_fd);
 	clear_res_type(res);
-	/*(*map)->spawn = malloc(sizeof(t_point));
-	(*map)->exit = malloc(sizeof(t_point));
-	if (!(*map)->spawn || !(*map)->exit)
-		return (error("error on malloc", MALLOC_ERROR));*/
 	create_points(map);
-	//show_map(map);
 	res = checker_map_build(map);
 	if (res->response == 0)
 		return (res);

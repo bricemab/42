@@ -6,7 +6,7 @@
 /*   By: bmabilla <bmabilla>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/06 12:04:15 by bmabilla          #+#    #+#             */
-/*   Updated: 2023/12/06 14:10:24 by bmabilla         ###   ########.fr       */
+/*   Updated: 2023/12/12 13:51:25 by bmabilla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	create_img(t_mlx *mlx, int x, int y, char *path)
 	if (!img)
 	{
 		ft_printf("%s not found", path);
-		return;
+		return ;
 	}
 	mlx_put_image_to_window(mlx->mlx, mlx->win, img, l * x, l * y);
 }

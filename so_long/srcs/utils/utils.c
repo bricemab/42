@@ -6,7 +6,7 @@
 /*   By: bmabilla <bmabilla>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 13:19:31 by bmabilla          #+#    #+#             */
-/*   Updated: 2023/12/06 11:56:32 by bmabilla         ###   ########.fr       */
+/*   Updated: 2023/12/12 13:52:37 by bmabilla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@
 
 void	show_map(t_map **map)
 {
-	int	i;
-	int	j;
+	int		i;
+	int		j;
 	t_point	point;
 
 	ft_printf("Map Height: %d\n", (*map)->height);
@@ -54,10 +54,10 @@ t_res	*error(char *str, int code)
 	res = malloc(sizeof(t_res));
 	(*res).response = 0;
 	(*res).code = code;
-    ft_printf("Error\n");
+	ft_printf("Error\n");
 	if (ft_strlen(str) != 0)
-    	ft_printf("%s\n", str);
-    return (res);
+		ft_printf("%s\n", str);
+	return (res);
 }
 
 t_res	*success(char *str)
@@ -68,9 +68,9 @@ t_res	*success(char *str)
 	res->response = 1;
 	str = ft_strcat(str, "");
 	if (ft_strlen(str) != 0)
-    	ft_printf("%s\n", str);
+		ft_printf("%s\n", str);
 	free(str);
-    return (res);
+	return (res);
 }
 
 void	init_zero(int count, ...)

@@ -12,11 +12,10 @@
 
 #include "../../includes/so_long.h"
 
-void	visiteNode(int x, int y, int items, t_map **map, int ii)
+void	visite_node(int x, int y, int items, t_map **map)
 {
 	t_point	*point;
 
-	ii++;
 	point = malloc(sizeof(t_point));
 	*point = (*map)->points[y][x];
 	if (x < 0 || y < 0 || y >= (*map)->height || x >= (*map)->width)
@@ -34,10 +33,10 @@ void	visiteNode(int x, int y, int items, t_map **map, int ii)
 	point->treated = 1;
 	(*map)->points[y][x] = *point;
 	free(point);
-	visiteNode(x, y + 1, items, map, ii);
-	visiteNode(x, y - 1, items, map, ii);
-	visiteNode(x + 1, y, items, map, ii);
-	visiteNode(x - 1, y, items, map, ii);
+	visite_node(x, y + 1, items, map);
+	visite_node(x, y - 1, items, map);
+	visite_node(x + 1, y, items, map);
+	visite_node(x - 1, y, items, map);
 }
 
 t_res	*checker_pathfinding(t_map **map)
@@ -46,11 +45,11 @@ t_res	*checker_pathfinding(t_map **map)
 
 	spawn = malloc(sizeof(t_point));
 	*spawn = (*map)->spawn;
-	visiteNode(spawn->x, spawn->y, 0, map, 0);
+	visite_node(spawn->x, spawn->y, 0, map);
+	free(spawn);
 	if ((*map)->valid_exit == 0)
 		return (error("Path to exit invalid", MAP_PATHFINDING_ERROR));
 	if ((*map)->valid_exit == 0)
-		return (error("Path to items invalid", MAP_PATHFINDING_ERROR));
-	
+		return (error("Path to items invalid", MAP_NBR_ITEMS_ERROR));
 	return (success("TODO: pathfinding heree"));
 }
