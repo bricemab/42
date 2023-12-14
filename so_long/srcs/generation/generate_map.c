@@ -6,7 +6,7 @@
 /*   By: bmabilla <bmabilla>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/06 12:04:15 by bmabilla          #+#    #+#             */
-/*   Updated: 2023/12/12 13:51:25 by bmabilla         ###   ########.fr       */
+/*   Updated: 2023/12/14 13:37:18 by bmabilla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,26 +26,40 @@ void	create_img(t_mlx *mlx, int x, int y, char *path)
 		ft_printf("%s not found", path);
 		return ;
 	}
-	mlx_put_image_to_window(mlx->mlx, mlx->win, img, l * x, l * y);
+	mlx_put_image_to_window(mlx->mlx, mlx->win, img, img_height * x, img_width * y);
 }
 
 char	*get_correct_map_image(t_map **map, int x, int y)
 {
-	t_point	ptn;
+	t_point	*ptn;
 
-	ptn = (*map)->points[y][x];
-	if (ptn.value == MAP_WALL_CHAR)
+	ptn = &(*map)->points[y][x];
+	if ((*ptn).value == MAP_WALL_CHAR)
 		return ("./images/wall_50x50.xpm");
-	else if (ptn.value == MAP_GROUND_CHAR)
+	else if ((*ptn).value == MAP_GROUND_CHAR)
 		return ("./images/ground_50x50.xpm");
-	else if (ptn.value == MAP_SPAWN_CHAR)
+	else if ((*ptn).value == MAP_SPAWN_CHAR)
 		return ("./images/char_50x50.xpm");
-	else if (ptn.value == MAP_EXIT_CHAR)
+	else if ((*ptn).value == MAP_EXIT_CHAR)
 		return ("./images/door_50x50.xpm");
-	else if (ptn.value == MAP_ITEM_CHAR)
+	else if ((*ptn).value == MAP_ITEM_CHAR)
 		return ("./images/item_50x50.xpm");
 	else
 		return ("./images/wall_50x50.xpm");
+}
+
+void	create_correct_image(t_mlx *mlx, int x, int y, t_map **map)
+{
+	t_point	*ptn;
+
+	ptn = &(*map)->points[y][x];
+	if ((*ptn).value == MAP_SPAWN_CHAR)
+	{
+		create_img(mlx, x, y, "./images/ground_50x50.xpm");
+		create_img(mlx, x, y, get_correct_map_image(map, x, y));
+	}
+	else
+		create_img(mlx, x, y, get_correct_map_image(map, x, y));
 }
 
 void	generate_map(t_map **map)
@@ -68,7 +82,8 @@ void	generate_map(t_map **map)
 		j = 0;
 		while (j < (*map)->width)
 		{
-			create_img(mlx, j, i, get_correct_map_image(map, j, i));
+			//create_img(mlx, j, i, get_correct_map_image(map, j, i));
+			create_correct_image(mlx, j, i, map);
 			j++;
 		}
 		i++;
