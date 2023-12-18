@@ -6,7 +6,7 @@
 /*   By: bmabilla <bmabilla>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 13:17:53 by bmabilla          #+#    #+#             */
-/*   Updated: 2023/12/12 13:49:53 by bmabilla         ###   ########.fr       */
+/*   Updated: 2023/12/18 14:18:37 by bmabilla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,8 +107,7 @@ t_res	*checker_map(t_map **map)
 	map_fd = open((*map)->path, O_RDONLY);
 	if (map_fd < 0)
 		return (error("path not found", FILE_NOT_FOUND));
-	(*map)->height = 0;
-	(*map)->width = 0;
+	init_zero(3, &(*map)->height, &(*map)->width, &(*map)->nbr_items);
 	res = read_lines(map, map_fd);
 	close(map_fd);
 	clear_res_type(res);
@@ -116,5 +115,6 @@ t_res	*checker_map(t_map **map)
 	res = checker_map_build(map);
 	if (res->response == 0)
 		return (res);
+	clear_res_type(res);
 	return (success("Checker_map() => OK"));
 }

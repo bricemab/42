@@ -6,7 +6,7 @@
 /*   By: bmabilla <bmabilla>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 13:14:58 by bmabilla          #+#    #+#             */
-/*   Updated: 2023/12/12 13:53:36 by bmabilla         ###   ########.fr       */
+/*   Updated: 2023/12/18 12:37:26 by bmabilla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,12 @@
 # define MAP_IMAGE_SIZE 50
 # define IMG_SIZE 50
 
+// Keyboard Binds
+# define BIND_UP 13
+# define BIND_DOWN 1
+# define BIND_LEFT 0
+# define BIND_RIGHT 2
+
 // Response type
 typedef struct s_res {
 	int		response;
@@ -74,10 +80,10 @@ typedef struct s_map {
 	t_point	**points;
 }				t_map;
 
-typedef struct s_mlx {
+typedef struct s_vars {
 	void	*mlx;
 	void	*win;
-}				t_mlx;
+}				t_vars;
 
 typedef struct s_data {
 	void	*img;
@@ -114,5 +120,9 @@ t_res	*checker_pathfinding(t_map **map);
 
 // Generate_map
 void	generate_map(t_map **map);
+
+// Movements
+int		hook_binds(int key, t_vars *vars);
+void	config_binds(t_vars *mlx);
 
 #endif

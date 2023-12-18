@@ -15,7 +15,7 @@ CC		= gcc
 FLAGS	= -Wall -Wextra -Werror
 RM		= rm -f
 SRCS	= main
-GENERATION = generate_map
+GENERATION = generate_map movements
 GENERATION_PATH = srcs/generation/
 CHECKERS_PATH = srcs/checkers/
 CHECKERS = checker_args checker_map checker_map_build checker_pathfinding
@@ -30,6 +30,9 @@ all:
 	@make -C ./libft
 	@make -C ./mlx
 	$(CC) $(FLAGS) -g -Lmlx -lmlx -framework OpenGL -framework AppKit $(addsuffix .c, $(SRCS)) $(addprefix $(UTILS_PATH), $(addsuffix .c, $(UTILS))) $(addprefix $(GENERATION_PATH), $(addsuffix .c, $(GENERATION))) $(addprefix $(CHECKERS_PATH), $(addsuffix .c, $(CHECKERS))) $(MLX) $(LIBFT) -o $(NAME)
+
+$(NAME):
+	all
 
 %.o: %.c
 	$(CC) -Wall -Wextra -Werror -Imlx -c $< -o $@ $(SRCS) -o $(NAME) $(LIBFT)

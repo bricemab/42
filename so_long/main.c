@@ -6,29 +6,12 @@
 /*   By: bmabilla <bmabilla>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 13:12:09 by bmabilla          #+#    #+#             */
-/*   Updated: 2023/12/14 12:42:10 by bmabilla         ###   ########.fr       */
+/*   Updated: 2023/12/18 13:57:07 by bmabilla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/so_long.h"
 #include "mlx/mlx.h"
-
-int	valid_args_map(int count, char **args, t_map **map)
-{
-	t_res	*response;
-
-	response = checker_args(count, args, map);
-	if ((*response).response == 0)
-		return (clear_map_response(map, response));
-	clear_res_type(response);
-	response = checker_map(map);
-	if ((*response).response == 0)
-		return (clear_map_response(map, response));
-	clear_res_type(response);
-	response = checker_pathfinding(map);
-	printf("%d", (*map)->width);
-	return (clear_map_response(map, response));
-}
 
 int	main(int count, char **args)
 {
@@ -48,7 +31,7 @@ int	main(int count, char **args)
 		return (clear_map_response(&map, response));
 	clear_res_type(response);
 	response = checker_pathfinding(&map);
-	clear_res_type(response);
+	//clear_res_type(response);
 	generate_map(&map);
-	return (1);
+	return (clear_map_response(&map, response));
 }

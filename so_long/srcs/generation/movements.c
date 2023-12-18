@@ -1,41 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   clear_mem.c                                        :+:      :+:    :+:   */
+/*   movements.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bmabilla <bmabilla>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/30 14:37:26 by bmabilla          #+#    #+#             */
-/*   Updated: 2023/12/18 12:06:36 by bmabilla         ###   ########.fr       */
+/*   Created: 2023/12/18 12:34:35 by bmabilla          #+#    #+#             */
+/*   Updated: 2023/12/18 12:37:10 by bmabilla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/so_long.h"
 
-int	clear_map_response(t_map **map, t_res *res)
+int	hook_binds(int key, t_vars *vars)
 {
-	int	i;
-
-	init_zero(1, &i);
-	if (!((*res).code == FILE_NOT_FOUND || (*res).code == MISSING_ARGS))
-	{
-		while (i < (*map)->height)
-		{
-			free((*map)->map[i]);
-			free((*map)->points[i]);
-			i++;
-		}
-		free((*map)->points);
-		free((*map)->map);
-	}
-	if ((*res).code != MISSING_ARGS)
-		free((*map)->path);
-	free((*map));
-	clear_res_type(res);
+	(void)vars;
+	
+	printf("Hello from key_hook! %d => %c\n", key, key);
 	return (0);
 }
 
-void	clear_res_type(t_res *res)
+void	config_binds(t_vars *mlx)
 {
-	free(res);
+	mlx_key_hook((*mlx).win, hook_binds, mlx);
 }

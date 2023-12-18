@@ -6,13 +6,13 @@
 /*   By: bmabilla <bmabilla>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/06 12:04:15 by bmabilla          #+#    #+#             */
-/*   Updated: 2023/12/14 13:37:18 by bmabilla         ###   ########.fr       */
+/*   Updated: 2023/12/18 14:10:14 by bmabilla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/so_long.h"
 
-void	create_img(t_mlx *mlx, int x, int y, char *path)
+void	create_img(t_vars *mlx, int x, int y, char *path)
 {
 	int		img_width;
 	int		img_height;
@@ -48,7 +48,7 @@ char	*get_correct_map_image(t_map **map, int x, int y)
 		return ("./images/wall_50x50.xpm");
 }
 
-void	create_correct_image(t_mlx *mlx, int x, int y, t_map **map)
+void	create_correct_image(t_vars *mlx, int x, int y, t_map **map)
 {
 	t_point	*ptn;
 
@@ -64,13 +64,13 @@ void	create_correct_image(t_mlx *mlx, int x, int y, t_map **map)
 
 void	generate_map(t_map **map)
 {
-	t_mlx	*mlx;
+	t_vars	*mlx;
 	void	*mlx_ini;
 	void	*mlx_win;
 	int		i;
 	int		j;
 
-	mlx = malloc(sizeof(t_mlx));
+	mlx = malloc(sizeof(t_vars));
 	mlx_ini = mlx_init();
 	mlx_win = mlx_new_window(mlx_ini, IMG_SIZE * (*map)->width,
 			IMG_SIZE * (*map)->height, "Game");
@@ -88,5 +88,6 @@ void	generate_map(t_map **map)
 		}
 		i++;
 	}
+	config_binds(mlx);
 	mlx_loop(mlx_ini);
 }
