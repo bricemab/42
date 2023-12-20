@@ -6,31 +6,36 @@
 /*   By: bmabilla <bmabilla>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/30 14:37:26 by bmabilla          #+#    #+#             */
-/*   Updated: 2023/12/18 12:06:36 by bmabilla         ###   ########.fr       */
+/*   Updated: 2023/12/20 12:16:03 by bmabilla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/so_long.h"
 
-int	clear_map_response(t_map **map, t_res *res)
+/*int clear_mlx(t_vars *mlx, t_map *map)
+{
+
+}*/
+
+int	clear_map_response(t_map *map, t_res *res)
 {
 	int	i;
 
 	init_zero(1, &i);
 	if (!((*res).code == FILE_NOT_FOUND || (*res).code == MISSING_ARGS))
 	{
-		while (i < (*map)->height)
+		while (i < map->height)
 		{
-			free((*map)->map[i]);
-			free((*map)->points[i]);
+			free(map->map[i]);
+			free(map->points[i]);
 			i++;
 		}
-		free((*map)->points);
-		free((*map)->map);
+		free(map->points);
+		free(map->map);
 	}
 	if ((*res).code != MISSING_ARGS)
-		free((*map)->path);
-	free((*map));
+		free(map->path);
+	//free(map);
 	clear_res_type(res);
 	return (0);
 }

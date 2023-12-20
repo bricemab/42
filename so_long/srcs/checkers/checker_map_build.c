@@ -6,29 +6,29 @@
 /*   By: bmabilla <bmabilla>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/30 13:33:05 by bmabilla          #+#    #+#             */
-/*   Updated: 2023/12/06 11:55:56 by bmabilla         ###   ########.fr       */
+/*   Updated: 2023/12/20 12:15:24 by bmabilla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/so_long.h"
 
-t_res	*round_by_walls(t_map **map)
+t_res	*round_by_walls(t_map *map)
 {
 	int	i;
 	int	j;
 
 	i = 0;
-	while (i < (*map)->height)
+	while (i < map->height)
 	{
 		j = 0;
-		if (!((*map)->map[i][0] == MAP_WALL_CHAR
-			&& (*map)->map[i][(*map)->width - 1] == MAP_WALL_CHAR))
+		if (!(map->map[i][0] == MAP_WALL_CHAR
+			&& map->map[i][map->width - 1] == MAP_WALL_CHAR))
 			return (error("Map missing wallff", MAP_NOT_ROUND_BY_WALL));
-		if (i == 0 || i == (*map)->height - 1)
+		if (i == 0 || i == map->height - 1)
 		{
-			while (j < (*map)->width)
+			while (j < map->width)
 			{
-				if ((*map)->map[i][j] != MAP_WALL_CHAR)
+				if (map->map[i][j] != MAP_WALL_CHAR)
 					return (error("Map missing wall", MAP_NOT_ROUND_BY_WALL));
 				j++;
 			}
@@ -48,7 +48,7 @@ void	incr_nbr_map(char ch, int *exit, int *spawn, int *items)
 		(*items)++;
 }
 
-t_res	*has_spawn_exit_items(t_map **map)
+t_res	*has_spawn_exit_items(t_map *map)
 {
 	int	exit;
 	int	items;
@@ -57,12 +57,12 @@ t_res	*has_spawn_exit_items(t_map **map)
 	int	j;
 
 	init_zero(5, &exit, &items, &spawn, &i, &j);
-	while (i < (*map)->height)
+	while (i < map->height)
 	{
 		j = 0;
-		while (j < (*map)->width)
+		while (j < map->width)
 		{
-			incr_nbr_map((*map)->map[i][j], &exit, &spawn, &items);
+			incr_nbr_map(map->map[i][j], &exit, &spawn, &items);
 			j++;
 		}
 		i++;
@@ -76,7 +76,7 @@ t_res	*has_spawn_exit_items(t_map **map)
 	return (success(""));
 }
 
-t_res	*checker_map_build(t_map **map)
+t_res	*checker_map_build(t_map *map)
 {
 	t_res	*res;
 

@@ -6,7 +6,7 @@
 /*   By: bmabilla <bmabilla>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 13:14:58 by bmabilla          #+#    #+#             */
-/*   Updated: 2023/12/18 12:37:26 by bmabilla         ###   ########.fr       */
+/*   Updated: 2023/12/20 14:09:23 by bmabilla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include <stdlib.h>
 # include <stdarg.h>
+# include <stdbool.h>
 # include "../libft/includes/libft.h"
 # include "../libft/includes/ft_printf.h"
 # include "../libft/includes/gnl.h"
@@ -50,6 +51,21 @@
 # define BIND_LEFT 0
 # define BIND_RIGHT 2
 
+// Images
+# define IMG_WALL "./images/wall_50x50.xpm"
+# define IMG_GROUND "./images/ground_50x50.xpm"
+# define IMG_CHAR "./images/char.xpm"
+# define IMG_ITEMS "./images/body-1_25x25.xpm"
+# define IMG_EXIT "./images/door_50x50.xpm"
+
+// Image of a Point
+typedef struct s_img {
+	void	*img;
+	char	*path;
+	int		height;
+	int		width;
+}				t_img;
+
 // Response type
 typedef struct s_res {
 	int		response;
@@ -64,20 +80,30 @@ typedef struct s_point {
 	int		y;
 	char	value;
 	int		treated;
+	bool	has_img;
+	t_img	img;
 }				t_point;
+
+// Player
+typedef struct s_player {
+	int		nbr_items;
+	char	*file;
+	t_point	pos;
+}				t_player;
 
 // Structur of the map
 typedef struct s_map {
-	char	**map;
-	int		height;
-	int		width;
-	int		nbr_items;
-	int		valid_exit;
-	int		valid_items;
-	char	*path;
-	t_point	spawn;
-	t_point	exit;
-	t_point	**points;
+	char		**map;
+	int			height;
+	int			width;
+	int			nbr_items;
+	int			valid_exit;
+	int			valid_items;
+	char		*path;
+	t_point		spawn;
+	t_point		exit;
+	t_point		**points;
+	t_player	player;
 }				t_map;
 
 typedef struct s_vars {
@@ -94,32 +120,32 @@ typedef struct s_data {
 }				t_data;
 
 // Clear_mem.c
-int		clear_map_response(t_map **map, t_res *res);
+int		clear_map_response(t_map *map, t_res *res);
 void	clear_res_type(t_res *res);
 
 // Utils.c
-void	show_map(t_map **map);
+void	show_map(t_map *map);
 t_res	*error(char *str, int code);
 t_res	*success(char *str);
 void	str_pop(char **str);
 void	init_zero(int count, ...);
 
 // Checker_args.c
-t_res	*checker_args(int count, char **args, t_map **map);
+t_res	*checker_args(int count, char **args, t_map *map);
 
 // Checker_map.c
-t_res	*checker_map(t_map **map);
+t_res	*checker_map(t_map *map);
 
 // Checker_map_build.c
-t_res	*round_by_walls(t_map **map);
-t_res	*checker_map_build(t_map **map);
-t_res	*has_spawn_exit_items(t_map **map);
+t_res	*round_by_walls(t_map *map);
+t_res	*checker_map_build(t_map *map);
+t_res	*has_spawn_exit_items(t_map *map);
 
 // Checker_pathfinding
-t_res	*checker_pathfinding(t_map **map);
+t_res	*checker_pathfinding(t_map *map);
 
 // Generate_map
-void	generate_map(t_map **map);
+void	generate_map(t_map *map);
 
 // Movements
 int		hook_binds(int key, t_vars *vars);

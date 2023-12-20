@@ -22,6 +22,9 @@
         "tuple": "c",
         "type_traits": "c",
         "vector": "c",
-        "__tree": "c"
+        "__tree": "c",
+        "ios": "c",
+        "mlx.h": "c",
+        "mlx_int.h": "c"
     }
 }

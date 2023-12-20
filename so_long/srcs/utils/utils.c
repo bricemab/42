@@ -6,7 +6,7 @@
 /*   By: bmabilla <bmabilla>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 13:19:31 by bmabilla          #+#    #+#             */
-/*   Updated: 2023/12/12 13:52:37 by bmabilla         ###   ########.fr       */
+/*   Updated: 2023/12/20 12:10:13 by bmabilla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,27 +14,27 @@
 #include "../../libft/includes/ft_printf.h"
 #include "../../libft/includes/libft.h"
 
-void	show_map(t_map **map)
+void	show_map(t_map *map)
 {
 	int		i;
 	int		j;
 	t_point	point;
 
-	ft_printf("Map Height: %d\n", (*map)->height);
-	ft_printf("Map Width: %d\n", (*map)->width);
+	ft_printf("Map Height: %d\n", map->height);
+	ft_printf("Map Width: %d\n", map->width);
 	init_zero(2, &i, &j);
-	while (i < (*map)->height)
+	while (i < map->height)
 	{
-		ft_printf("%s\n", (*map)->map[i]);
+		ft_printf("%s\n", map->map[i]);
 		i++;
 	}
 	i = 0;
-	while (i < (*map)->height)
+	while (i < map->height)
 	{
 		j = 0;
-		while (j < (*map)->width)
+		while (j < map->width)
 		{
-			point = (*map)->points[i][j];
+			point = map->points[i][j];
 			ft_printf("x = %d | y = %d | value = %c\n", point.x, point.y, point.value);
 			j++;
 		}
