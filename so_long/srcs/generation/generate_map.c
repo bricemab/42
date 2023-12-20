@@ -6,7 +6,7 @@
 /*   By: bmabilla <bmabilla>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/06 12:04:15 by bmabilla          #+#    #+#             */
-/*   Updated: 2023/12/20 15:31:41 by bmabilla         ###   ########.fr       */
+/*   Updated: 2023/12/20 15:32:05 by bmabilla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,7 +123,6 @@ void	generate_map(t_map *map)
 	mlx.mlx = mlx_init();
 	mlx.win = mlx_new_window(mlx.mlx, IMG_SIZE * map->width,
 			IMG_SIZE * map->height, "SO LONG");
-	init_zero(2, &i, &j);
 	generate_bg_img(&mlx, map);
 	generate_none_bg_img(&mlx, map);
 	config_binds(&mlx);
