@@ -6,7 +6,7 @@
 /*   By: bmabilla <bmabilla>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 13:14:58 by bmabilla          #+#    #+#             */
-/*   Updated: 2023/12/20 14:09:23 by bmabilla         ###   ########.fr       */
+/*   Updated: 2023/12/21 15:32:16 by bmabilla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,8 @@
 # define IMG_SIZE 50
 
 // Keyboard Binds
+# define BIND_ESC 53
+# define BIND_Q 12
 # define BIND_UP 13
 # define BIND_DOWN 1
 # define BIND_LEFT 0
@@ -99,6 +101,7 @@ typedef struct s_map {
 	int			nbr_items;
 	int			valid_exit;
 	int			valid_items;
+	int			nbr_movments;
 	char		*path;
 	t_point		spawn;
 	t_point		exit;
@@ -109,6 +112,7 @@ typedef struct s_map {
 typedef struct s_vars {
 	void	*mlx;
 	void	*win;
+	t_map	*map;
 }				t_vars;
 
 typedef struct s_data {
@@ -146,9 +150,16 @@ t_res	*checker_pathfinding(t_map *map);
 
 // Generate_map
 void	generate_map(t_map *map);
+t_img	generate_img(t_vars *mlx, t_point *ptn, bool is_bg);
 
 // Movements
 int		hook_binds(int key, t_vars *vars);
-void	config_binds(t_vars *mlx);
+
+//Generate bg images
+void	generate_none_bg_img(t_vars *mlx, t_map *map);
+void	generate_bg_img(t_vars *mlx, t_map *map);
+
+//Player
+t_player	init_player(t_point ptn);
 
 #endif

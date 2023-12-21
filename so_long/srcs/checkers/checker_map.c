@@ -6,7 +6,7 @@
 /*   By: bmabilla <bmabilla>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 13:17:53 by bmabilla          #+#    #+#             */
-/*   Updated: 2023/12/20 12:15:03 by bmabilla         ###   ########.fr       */
+/*   Updated: 2023/12/21 15:33:45 by bmabilla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,10 @@ void	create_points(t_map *map)
 			if (point->value == MAP_EXIT_CHAR)
 				map->exit = *point;
 			if (point->value == MAP_SPAWN_CHAR)
+			{
 				map->spawn = *point;
+				map->player = init_player(*point);
+			}
 			free(point);
 			j++;
 		}
@@ -107,7 +110,7 @@ t_res	*checker_map(t_map *map)
 	map_fd = open(map->path, O_RDONLY);
 	if (map_fd < 0)
 		return (error("path not found", FILE_NOT_FOUND));
-	init_zero(3, &(map->height), &(map->width), &(map->nbr_items));
+	init_zero(4, &(map->height), &(map->width), &(map->nbr_items), &(map->nbr_movments));
 	res = read_lines(map, map_fd);
 	close(map_fd);
 	clear_res_type(res);

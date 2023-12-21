@@ -6,7 +6,7 @@
 /*   By: bmabilla <bmabilla>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/06 12:04:15 by bmabilla          #+#    #+#             */
-/*   Updated: 2023/12/20 15:32:05 by bmabilla         ###   ########.fr       */
+/*   Updated: 2023/12/21 15:27:54 by bmabilla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,60 +60,20 @@ char	*get_img_path(t_point ptn, bool is_bg)
 		return (IMG_WALL);
 }
 
-t_img	generate_img(t_vars *mlx, t_point *ptn, t_map *map, bool is_bg)
+t_img	generate_img(t_vars *mlx, t_point *ptn, bool is_bg)
 {
 	char	*path;
 	t_img	img;
 
-	(void)map;
 	path = get_img_path(*ptn, is_bg);
 	img = create_img(mlx, ptn, path);
 	ptn->img = img;
 	return (img);
 }
 
-void generate_none_bg_img(t_vars *mlx, t_map *map)
+void	config_binds(t_vars *mlx)
 {
-	int		i;
-	int		j;
-	t_point	*ptn;
-	t_img	img;
-
-	init_zero(2, &i, &j);
-	while (i < map->height)
-	{
-		j = 0;
-		while (j < map->width)
-		{
-			ptn = &(map->points[i][j]);
-			if (!(ptn->value == MAP_GROUND_CHAR || ptn->value == MAP_WALL_CHAR))
-			{
-				img = generate_img(mlx, &(map->points[i][j]), map, false);
-				ptn->has_img = true;
-				ptn->img = img;
-			}
-			j++;
-		}
-		i++;
-	}
-}
-
-void	generate_bg_img(t_vars *mlx, t_map *map)
-{
-	int	i;
-	int	j;
-
-	init_zero(2, &i, &j);
-	while (i < map->height)
-	{
-		j = 0;
-		while (j < map->width)
-		{
-			generate_img(mlx, &(map->points[i][j]), map, true);
-			j++;
-		}
-		i++;
-	}
+	mlx_key_hook(mlx->win, hook_binds, mlx);
 }
 
 void	generate_map(t_map *map)
@@ -123,6 +83,7 @@ void	generate_map(t_map *map)
 	mlx.mlx = mlx_init();
 	mlx.win = mlx_new_window(mlx.mlx, IMG_SIZE * map->width,
 			IMG_SIZE * map->height, "SO LONG");
+	mlx.map = map;
 	generate_bg_img(&mlx, map);
 	generate_none_bg_img(&mlx, map);
 	config_binds(&mlx);
