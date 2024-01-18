@@ -6,7 +6,7 @@
 /*   By: bmabilla <bmabilla>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 12:24:33 by bmabilla          #+#    #+#             */
-/*   Updated: 2023/12/21 13:32:27 by bmabilla         ###   ########.fr       */
+/*   Updated: 2024/01/18 13:51:26 by bmabilla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 t_player	init_player(t_point ptn)
 {
-	t_player player;
+	t_player	player;
 
 	player.nbr_items = 0;
 	player.pos = ptn;

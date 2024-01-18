@@ -6,12 +6,11 @@
 /*   By: bmabilla <bmabilla>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 13:50:00 by bmabilla          #+#    #+#             */
-/*   Updated: 2023/12/21 14:17:44 by bmabilla         ###   ########.fr       */
+/*   Updated: 2024/01/18 13:49:12 by bmabilla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/so_long.h"
-
 
 void generate_none_bg_img(t_vars *mlx, t_map *map)
 {
@@ -37,6 +36,14 @@ void generate_none_bg_img(t_vars *mlx, t_map *map)
 		}
 		i++;
 	}
+}
+
+int		close_window(int keycode, void *param)
+{
+	(void)keycode;
+	(void)param;
+	exit(0);
+	return (0);
 }
 
 void	generate_bg_img(t_vars *mlx, t_map *map)

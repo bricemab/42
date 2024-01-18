@@ -6,16 +6,11 @@
 /*   By: bmabilla <bmabilla>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/30 14:37:26 by bmabilla          #+#    #+#             */
-/*   Updated: 2023/12/20 12:16:03 by bmabilla         ###   ########.fr       */
+/*   Updated: 2024/01/18 13:51:00 by bmabilla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/so_long.h"
-
-/*int clear_mlx(t_vars *mlx, t_map *map)
-{
-
-}*/
 
 int	clear_map_response(t_map *map, t_res *res)
 {
@@ -35,7 +30,7 @@ int	clear_map_response(t_map *map, t_res *res)
 	}
 	if ((*res).code != MISSING_ARGS)
 		free(map->path);
-	//free(map);
+	free(map);
 	clear_res_type(res);
 	return (0);
 }

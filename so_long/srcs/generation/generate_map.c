@@ -6,7 +6,7 @@
 /*   By: bmabilla <bmabilla>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/06 12:04:15 by bmabilla          #+#    #+#             */
-/*   Updated: 2023/12/21 15:27:54 by bmabilla         ###   ########.fr       */
+/*   Updated: 2024/01/10 12:40:44 by bmabilla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,5 +87,6 @@ void	generate_map(t_map *map)
 	generate_bg_img(&mlx, map);
 	generate_none_bg_img(&mlx, map);
 	config_binds(&mlx);
+	mlx_hook(mlx.win, 17, 0, close_window, NULL);
 	mlx_loop(mlx.mlx);
 }

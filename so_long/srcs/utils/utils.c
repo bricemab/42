@@ -6,7 +6,7 @@
 /*   By: bmabilla <bmabilla>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 13:19:31 by bmabilla          #+#    #+#             */
-/*   Updated: 2023/12/20 12:10:13 by bmabilla         ###   ########.fr       */
+/*   Updated: 2024/01/18 13:51:51 by bmabilla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,8 @@ void	show_map(t_map *map)
 		while (j < map->width)
 		{
 			point = map->points[i][j];
-			ft_printf("x = %d | y = %d | value = %c\n", point.x, point.y, point.value);
+			ft_printf("x = %d | y = %d | value = %c\n",
+				point.x, point.y, point.value);
 			j++;
 		}
 		i++;

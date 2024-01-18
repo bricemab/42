@@ -53,5 +53,5 @@ t_res	*checker_pathfinding(t_map *map)
 		return (error("Path to exit invalid", MAP_PATHFINDING_ERROR));
 	if (map->valid_items == 0)
 		return (error("Path to items invalid", MAP_NBR_ITEMS_ERROR));
-	return (success("TODO: pathfinding heree"));
+	return (success(""));
 }

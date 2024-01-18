@@ -6,7 +6,7 @@
 /*   By: bmabilla <bmabilla>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 13:18:51 by bmabilla          #+#    #+#             */
-/*   Updated: 2023/12/20 12:00:11 by bmabilla         ###   ########.fr       */
+/*   Updated: 2024/01/10 12:43:22 by bmabilla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,5 +30,5 @@ t_res	*checker_args(int count, char **args, t_map *map)
 			error("checker_args() => path not found", FILE_NOT_FOUND)
 		);
 	close(map_fd);
-	return (success("checker_args() => OK"));
+	return (success(""));
 }

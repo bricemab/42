@@ -6,11 +6,17 @@
 /*   By: bmabilla <bmabilla>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/18 12:34:35 by bmabilla          #+#    #+#             */
-/*   Updated: 2023/12/21 15:33:07 by bmabilla         ###   ########.fr       */
+/*   Updated: 2024/01/18 13:48:06 by bmabilla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/so_long.h"
+
+void	win(int nbr_movements)
+{
+	ft_printf("You win in %d movements", nbr_movements);
+	exit(0);
+}
 
 void	move(t_vars *mlx, int add_x, int add_y)
 {
@@ -32,7 +38,7 @@ void	move(t_vars *mlx, int add_x, int add_y)
 		if (p.nbr_items != mlx->map->nbr_items)
 			return ;
 		else
-			return exit(0);
+			return win(mlx->map->nbr_movments);
 	}
 	mlx->map->nbr_movments++;
 	ft_printf("%d moves\n", mlx->map->nbr_movments);

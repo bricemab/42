@@ -6,7 +6,7 @@
 /*   By: bmabilla <bmabilla>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 13:17:53 by bmabilla          #+#    #+#             */
-/*   Updated: 2023/12/21 15:33:45 by bmabilla         ###   ########.fr       */
+/*   Updated: 2024/01/18 13:54:49 by bmabilla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,5 +119,5 @@ t_res	*checker_map(t_map *map)
 	if (res->response == 0)
 		return (res);
 	clear_res_type(res);
-	return (success("Checker_map() => OK"));
+	return (success(""));
 }
