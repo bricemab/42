@@ -30,7 +30,6 @@ int	clear_map_response(t_map *map, t_res *res)
 	}
 	if ((*res).code != MISSING_ARGS)
 		free(map->path);
-	free(map);
 	clear_res_type(res);
 	return (0);
 }
