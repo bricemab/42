@@ -6,7 +6,7 @@
 /*   By: bmabilla <bmabilla>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/18 12:34:35 by bmabilla          #+#    #+#             */
-/*   Updated: 2024/01/23 11:52:58 by bmabilla         ###   ########.fr       */
+/*   Updated: 2024/01/23 13:49:46 by bmabilla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ int	move_char(t_point *next_ptn, t_player *p, t_vars *mlx)
 			return (1);
 		else
 		{
+			mlx->map->nbr_movments++;
+			ft_printf("%d moves\n", mlx->map->nbr_movments);
 			win(mlx->map->nbr_movments);
 			return (1);
 		}

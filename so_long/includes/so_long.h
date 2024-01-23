@@ -6,7 +6,7 @@
 /*   By: bmabilla <bmabilla>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 13:14:58 by bmabilla          #+#    #+#             */
-/*   Updated: 2024/01/10 12:40:32 by bmabilla         ###   ########.fr       */
+/*   Updated: 2024/01/23 13:53:38 by bmabilla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,43 +124,47 @@ typedef struct s_data {
 }				t_data;
 
 // Clear_mem.c
-int		clear_map_response(t_map *map, t_res *res);
-void	clear_res_type(t_res *res);
+int			clear_map_response(t_map *map, t_res *res);
+void		clear_res_type(t_res *res);
 
 // Utils.c
-void	show_map(t_map *map);
-t_res	*error(char *str, int code);
-t_res	*success(char *str);
-void	str_pop(char **str);
-void	init_zero(int count, ...);
+void		show_map(t_map *map);
+t_res		*error(char *str, int code);
+t_res		*success(char *str);
+void		str_pop(char **str);
+void		init_zero(int count, ...);
 
 // Checker_args.c
-t_res	*checker_args(int count, char **args, t_map *map);
+t_res		*checker_args(int count, char **args, t_map *map);
 
 // Checker_map.c
-t_res	*checker_map(t_map *map);
+t_res		*checker_map(t_map *map);
+t_point		*create_point(int x, int y, t_map *map);
+
+// Checker_map_2.c
+void		create_point_2(int x, int y, t_map *map);
 
 // Checker_map_build.c
-t_res	*round_by_walls(t_map *map);
-t_res	*checker_map_build(t_map *map);
-t_res	*has_spawn_exit_items(t_map *map);
+t_res		*round_by_walls(t_map *map);
+t_res		*checker_map_build(t_map *map);
+t_res		*has_spawn_exit_items(t_map *map);
 
 // Checker_pathfinding
-t_res	*checker_pathfinding(t_map *map);
+t_res		*checker_pathfinding(t_map *map);
 
 // Generate_map
-void	generate_map(t_map *map);
-t_img	generate_img(t_vars *mlx, t_point *ptn, bool is_bg);
+void		generate_map(t_map *map);
+t_img		generate_img(t_vars *mlx, t_point *ptn, bool is_bg);
 
 // Movements
-int		hook_binds(int key, t_vars *vars);
+int			hook_binds(int key, t_vars *vars);
 
 //Generate bg images
-void	generate_none_bg_img(t_vars *mlx, t_map *map);
-void	generate_bg_img(t_vars *mlx, t_map *map);
-int		close_window(int keycode, void *param);
+void		get_corr_x_y(int *corr_x, int *corr_y, t_img img, t_point *ptn);
+void		generate_none_bg_img(t_vars *mlx, t_map *map);
+void		generate_bg_img(t_vars *mlx, t_map *map);
+int			close_window(int keycode, void *param);
 
 //Player
 t_player	init_player(t_point ptn);
-
 #endif
