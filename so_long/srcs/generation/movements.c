@@ -6,7 +6,7 @@
 /*   By: bmabilla <bmabilla>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/18 12:34:35 by bmabilla          #+#    #+#             */
-/*   Updated: 2024/01/18 13:48:06 by bmabilla         ###   ########.fr       */
+/*   Updated: 2024/01/23 11:52:58 by bmabilla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,25 @@ void	win(int nbr_movements)
 {
 	ft_printf("You win in %d movements", nbr_movements);
 	exit(0);
+}
+
+int	move_char(t_point *next_ptn, t_player *p, t_vars *mlx)
+{
+	if (next_ptn->value == MAP_WALL_CHAR)
+		return (1);
+	if (next_ptn->value == MAP_ITEM_CHAR)
+		p->nbr_items++;
+	if (next_ptn->value == MAP_EXIT_CHAR)
+	{
+		if (p->nbr_items != mlx->map->nbr_items)
+			return (1);
+		else
+		{
+			win(mlx->map->nbr_movments);
+			return (1);
+		}
+	}
+	return (0);
 }
 
 void	move(t_vars *mlx, int add_x, int add_y)
@@ -29,17 +48,8 @@ void	move(t_vars *mlx, int add_x, int add_y)
 	p.pos.y += add_y;
 	p.pos.x += add_x;
 	next_ptn = &(mlx->map->points[p.pos.y][p.pos.x]);
-	if (next_ptn->value == MAP_WALL_CHAR)
+	if (move_char(next_ptn, &p, mlx) == 1)
 		return ;
-	if (next_ptn->value == MAP_ITEM_CHAR)
-		p.nbr_items++;
-	if (next_ptn->value == MAP_EXIT_CHAR)
-	{
-		if (p.nbr_items != mlx->map->nbr_items)
-			return ;
-		else
-			return win(mlx->map->nbr_movments);
-	}
 	mlx->map->nbr_movments++;
 	ft_printf("%d moves\n", mlx->map->nbr_movments);
 	mlx->map->player = p;

@@ -6,7 +6,7 @@
 /*   By: bmabilla <bmabilla>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 13:17:53 by bmabilla          #+#    #+#             */
-/*   Updated: 2024/01/18 13:54:49 by bmabilla         ###   ########.fr       */
+/*   Updated: 2024/01/23 11:39:25 by bmabilla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ void	create_points(t_map *map)
 	int		i;
 	int		j;
 	int		k;
-	t_point	*point;
 
 	map->points = malloc(sizeof(t_point *) * (map->height + 1));
 	init_zero(3, &i, &j, &k);
@@ -46,16 +45,7 @@ void	create_points(t_map *map)
 		j = 0;
 		while (j < map->width)
 		{
-			point = create_point(j, i, map);
-			map->points[i][j] = *point;
-			if (point->value == MAP_EXIT_CHAR)
-				map->exit = *point;
-			if (point->value == MAP_SPAWN_CHAR)
-			{
-				map->spawn = *point;
-				map->player = init_player(*point);
-			}
-			free(point);
+			create_point_2(j, i, map);
 			j++;
 		}
 		i++;
@@ -63,9 +53,6 @@ void	create_points(t_map *map)
 	return ;
 }
 
-/* si on passe dans ce cas, ca veut dire que les lignes ne sont pas de la
-	meme taille
-	on se base sur la taille de la premiere ligne */
 t_res	*add_new_line(t_map *map, char **line)
 {
 	if (map->height != 0 && map->width != (int)ft_strlen(*line))
@@ -110,7 +97,8 @@ t_res	*checker_map(t_map *map)
 	map_fd = open(map->path, O_RDONLY);
 	if (map_fd < 0)
 		return (error("path not found", FILE_NOT_FOUND));
-	init_zero(4, &(map->height), &(map->width), &(map->nbr_items), &(map->nbr_movments));
+	init_zero(4, &(map->height),
+		&(map->width), &(map->nbr_items), &(map->nbr_movments));
 	res = read_lines(map, map_fd);
 	close(map_fd);
 	clear_res_type(res);

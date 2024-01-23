@@ -6,12 +6,11 @@
 /*   By: bmabilla <bmabilla>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/06 12:04:15 by bmabilla          #+#    #+#             */
-/*   Updated: 2024/01/10 12:40:44 by bmabilla         ###   ########.fr       */
+/*   Updated: 2024/01/23 11:43:30 by bmabilla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/so_long.h"
-
 
 t_img	create_img(t_vars *mlx, t_point *ptn, char *path)
 {
@@ -19,7 +18,8 @@ t_img	create_img(t_vars *mlx, t_point *ptn, char *path)
 	int		corr_x;
 	int		corr_y;
 
-	img.img = mlx_xpm_file_to_image(mlx->mlx, path, &(img.width), &(img.height));
+	img.img = mlx_xpm_file_to_image(
+			mlx->mlx, path, &(img.width), &(img.height));
 	img.path = path;
 	if (!img.img)
 	{
@@ -28,17 +28,8 @@ t_img	create_img(t_vars *mlx, t_point *ptn, char *path)
 		return (img);
 	}
 	ptn->has_img = true;
-	if (img.height != IMG_SIZE)
-	{
-		corr_x = ptn->x * IMG_SIZE + img.height / 2;
-		corr_y = ptn->y * IMG_SIZE + img.width / 2;
-	} 
-	else {
-		corr_x = ptn->x * IMG_SIZE;
-		corr_y = ptn->y * IMG_SIZE;
-	}
+	get_corr_x_y(&corr_x, &corr_y, img, ptn);
 	mlx_put_image_to_window(mlx->mlx, mlx->win, img.img, corr_x, corr_y);
-	
 	return (img);
 }
 
